@@ -1,7 +1,7 @@
 package Classes;
 
 public class CelledPuzzle {
-  Cell[][] grid;
+  public Cell[][] grid;
 
   //==============================================================
   // Constructors
@@ -12,6 +12,7 @@ public class CelledPuzzle {
   }
 
   public CelledPuzzle(int[][] g){
+    this.grid = new Cell[9][9];
     for(int i = 0; i < g.length; i++){
       for(int j = 0; j < g.length; j++){
         this.grid[i][j] = new Cell(g[i][j]);

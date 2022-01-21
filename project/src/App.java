@@ -7,11 +7,11 @@ public class App {
         for(int[][] puzzle : Puzzles.minimum_clues){
 
             System.out.println(
-                "\n========================================" +
-                "\n     SIMPLE (BRUTE FORCE/BACKTRACK)" +
-                "\n========================================"
+                "\n=====================================" +
+                "\n   SIMPLE (BRUTE FORCE/BACKTRACK)" +
+                "\n====================================="
             );
-            SimplePuzzle p = new SimplePuzzle(puzzle);
+            CelledPuzzle p = new CelledPuzzle(puzzle);
             Backtrack.solve(p);
         }
     }
