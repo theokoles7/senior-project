@@ -1,5 +1,5 @@
 import Algorithms.*;
-import Sudoku.*;
+import Classes.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -11,8 +11,8 @@ public class App {
                 "\n     SIMPLE (BRUTE FORCE/BACKTRACK)" +
                 "\n========================================"
             );
-            Puzzle_Simple p = new Puzzle_Simple(puzzle);
-            Simple.solve(p);
+            SimplePuzzle p = new SimplePuzzle(puzzle);
+            Backtrack.solve(p);
         }
     }
 }

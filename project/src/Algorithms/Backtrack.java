@@ -1,8 +1,8 @@
 package Algorithms;
 
-import Sudoku.Puzzle_Simple;
+import Classes.SimplePuzzle;
 
-public class Simple{
+public class Backtrack{
 
     /**
      * Recursive, brute force algorithm that uses the backtracking method
@@ -10,7 +10,7 @@ public class Simple{
      * @return boolean [TRUE] Puzzle is solved successfully or valid 
      * candidate was found for cell [FALSE] if Sudoku violation is found
      */
-    public static boolean _solve(Puzzle_Simple p){
+    public static boolean _solve(SimplePuzzle p){
         for(int i = 0; i < p.grid.length; i++){
             for(int j = 0; j < p.grid.length; j++){
                 if(p.grid[i][j] == 0){
@@ -41,7 +41,7 @@ public class Simple{
      * "FAILED" is printed and no solution is provided.
      * @param p Puzzle to be solved
      */
-    public static void solve(Puzzle_Simple p){
+    public static void solve(SimplePuzzle p){
         p.stringify();
         if(_solve(p)){
             System.out.println("*******SOLVED*******");
