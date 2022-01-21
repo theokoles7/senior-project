@@ -21,6 +21,26 @@ public class CelledPuzzle {
   }
 
   //==============================================================
+  // Pencil Marks
+  //==============================================================
+
+  /**
+   * Adds pencil marks for valid candidates in grid[r][c]
+   * @param r [int] Row component of coordinate
+   * @param c [int] Column component of coordinate
+   * @see Cell.mark()
+   */
+  public void pencilMark(int r, int c){
+    for(int i = 1; i <= grid.length + 1; i++){
+      if(numValid(i, r, c)){
+        grid[r][c].mark(i);
+      }else{
+        grid[r][c].erase(i);
+      }
+    }
+  }
+
+  //==============================================================
   // Candidate Validation
   //==============================================================
 
