@@ -17,67 +17,67 @@ public class App {
         );
 
         for(int[][] p : Puzzles.easy){
-            SimplePuzzle sp = new SimplePuzzle(p);
+            CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
                 "\n%-14s %-5b  %12.2f ms",
                 "EASY",
-                Backtrack.solve(sp),
+                Backtrack.solve(cp),
                 (System.nanoTime() - time) / 1000000
             );
         }
 
         for(int[][] p : Puzzles.medium){
-            SimplePuzzle sp = new SimplePuzzle(p);
+            CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
                 "\n%-14s %-5b  %12.2f ms",
                 "MEDIUM",
-                Backtrack.solve(sp),
+                Backtrack.solve(cp),
                 (System.nanoTime() - time) / 1000000
             );
         }
 
         for(int[][] p : Puzzles.hard){
-            SimplePuzzle sp = new SimplePuzzle(p);
+            CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
                 "\n%-14s %-5b  %12.2f ms",
                 "HARD",
-                Backtrack.solve(sp),
+                Backtrack.solve(cp),
                 (System.nanoTime() - time) / 1000000
             );
         }
 
         for(int[][] p : Puzzles.expert){
-            SimplePuzzle sp = new SimplePuzzle(p);
+            CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
                 "\n%-14s %-5b  %12.2f ms",
                 "EXPERT",
-                Backtrack.solve(sp),
+                Backtrack.solve(cp),
                 (System.nanoTime() - time) / 1000000
             );
         }
 
         for(int[][] p : Puzzles.evil){
-            SimplePuzzle sp = new SimplePuzzle(p);
+            CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
                 "\n%-14s %-5b  %12.2f ms",
                 "EVIL",
-                Backtrack.solve(sp),
+                Backtrack.solve(cp),
                 (System.nanoTime() - time) / 1000000
             );
         }
 
         for(int[][] p : Puzzles.minimum_clues){
-            SimplePuzzle sp = new SimplePuzzle(p);
+            CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
                 "\n%-14s %-5b  %12.2f ms",
                 "17 Clues",
-                Backtrack.solve(sp),
+                Backtrack.solve(cp),
                 (System.nanoTime() - time) / 1000000
             );
         }
