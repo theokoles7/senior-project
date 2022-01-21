@@ -52,10 +52,20 @@ public class Cell {
   // Pencil Marks
   //==============================================================
 
+  /**
+   * Adds a pencil mark (valid candidate) for the cell
+   * @param n [int] Number being added as pencil mark
+   * @return [TRUE] Number added [FALSE] Number already present
+   */
   public boolean mark(int n){
     return this.pencil_marks.add(n);
   }
 
+  /**
+   * Removes a pencil mark (valid candidate) for the cell
+   * @param n [int] Number to be removed from pencil marks
+   * @return [TRUE] Number was removed [FALSE] Number did not exist
+   */
   public boolean erase(int n){
     return this.pencil_marks.remove(n);
   }
