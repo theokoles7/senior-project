@@ -9,7 +9,7 @@ public class Backtrack{
     //==============================================================
 
     /**
-     * Acts as the controller function for the Simple 
+     * Acts as the controller function for the Backtrack 
      * algorithm; Makes the call to @see _solve().
      * If the puzzle is solved successfully, "SOLVED" 
      * is printed along with the solution. Otherwise
