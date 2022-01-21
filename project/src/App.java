@@ -1,5 +1,5 @@
 import Algorithms.*;
-import Sudoku.*;
+import Classes.*;
 
 public class App {
     public static void main(String[] args) throws Exception {

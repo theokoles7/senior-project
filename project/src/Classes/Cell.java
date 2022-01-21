@@ -1,4 +1,4 @@
-package Sudoku;
+package Classes;
 
 import java.util.SortedSet;
 import java.util.TreeSet;

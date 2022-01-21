@@ -1,4 +1,4 @@
-package Sudoku;
+package Classes;
 
 public class SimplePuzzle {
     public int[][] grid;

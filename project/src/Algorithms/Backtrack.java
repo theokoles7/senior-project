@@ -1,6 +1,6 @@
 package Algorithms;
 
-import Sudoku.SimplePuzzle;
+import Classes.SimplePuzzle;
 
 public class Backtrack{
 
