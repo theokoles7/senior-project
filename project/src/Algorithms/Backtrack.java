@@ -16,13 +16,13 @@ public class Backtrack{
      * "FAILED" is printed and no solution is provided.
      * @param p [SimplePuzzle] Puzzle to be solved
      */
-    public static void solve(SimplePuzzle p){
-        p.stringify();
+    public static boolean solve(SimplePuzzle p){
+        //p.stringify();
         if(_solve(p)){
-            System.out.println("***************SOLVED****************");
-            p.stringify();
+            //p.stringify();
+            return true;
         }else{
-            System.out.println("***************FAILED****************");
+            return false;
         }
     }
 
