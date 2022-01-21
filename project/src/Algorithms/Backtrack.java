@@ -67,13 +67,13 @@ public class Backtrack{
      * "FAILED" is printed and no solution is provided.
      * @param p [CelledPuzzle] Puzzle to be solved
      */
-    public static void solve(CelledPuzzle p){
-        p.stringify();
+    public static boolean solve(CelledPuzzle p){
+        //p.stringify();
         if(_solve(p)){
-            System.out.println("***************SOLVED****************");
-            p.stringify();
+            // p.stringify();
+            return true;
         }else{
-            System.out.println("***************FAILED****************");
+            return false;
         }
     }
 
