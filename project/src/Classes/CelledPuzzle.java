@@ -86,21 +86,18 @@ public class CelledPuzzle {
   /**
    * Prints Puzzle object in traditional sudoku format (9 rows, 9 columns)
    */
-  public void stringify(){
-      System.out.println();
+    public void stringify(){
+      System.out.println("\n-------------------------------------");
       for(int i = 0; i < grid.length; i++){
+          System.out.print("|");
           for(int j = 0; j < grid.length; j++){
-              if(j == 2 || j == 5){
-                  System.out.print(grid[i][j].getVal() + " | ");
-              }else if(j == 8){
-                  System.out.print(grid[i][j].getVal() + "\n");
+              if(grid[i][j].getVal() != 0){
+                  System.out.print(" " + grid[i][j].getVal() + " |");
               }else{
-                  System.out.print(grid[i][j].getVal() + " ");
+                  System.out.print("   |");
               }
           }
-          if(i == 2 || i == 5){
-              System.out.println("---------------------");
-          }
+          System.out.println("\n-------------------------------------");
       }
       System.out.println();
   }
