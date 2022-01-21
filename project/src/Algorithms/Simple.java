@@ -1,6 +1,6 @@
 package Algorithms;
 
-import Puzzle.Puzzle;
+import Sudoku.Puzzle;
 
 public class Simple{
 
