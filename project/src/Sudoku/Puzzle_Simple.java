@@ -1,17 +1,17 @@
 package Sudoku;
 
-public class Puzzle {
+public class Puzzle_Simple {
     public int[][] grid;
 
     //==============================================================
     // Constructors
     //==============================================================
 
-    public Puzzle(){
+    public Puzzle_Simple(){
         this.grid = new int[9][9];
     }
 
-    public Puzzle(int[][] g){
+    public Puzzle_Simple(int[][] g){
         this.grid = g;
     }
 
