@@ -12,6 +12,7 @@ If, when the algorithm moves to the next empty cell, there is no valid candidate
 ### Box
 A 3x3 Cell region; There are 9 boxes in a traditional 9x9 Sudoku, placed in a 3x3 arrangement; Can be thought of as a smaller grid, with 3 columns, 3 rows, and a total of 9 cells
 
+```
  1 | 2 | 3 |   |   |   |   |   | 
 -----------------------------------
  4 | 5 | 6 |   |   |   |   |   |
@@ -29,6 +30,7 @@ A 3x3 Cell region; There are 9 boxes in a traditional 9x9 Sudoku, placed in a 3x
    |   |   |   |   |   |   |   |
 -----------------------------------
    |   |   |   |   |   |   |   |
+```
 
 ### Cell
 Refers to any individual input square/spot within a row, column, or box; Holds exactly one number; There 81 cells in a traditional 9x9 Sudoku
@@ -36,6 +38,7 @@ Refers to any individual input square/spot within a row, column, or box; Holds e
 ### Column
 A vertical group of 9 cells; There are 9 columns in a traditional 9x9 Sudoku
 
+```
  1 |   |   |   |   |   |   |   | 
 -----------------------------------
  2 |   |   |   |   |   |   |   |
@@ -53,10 +56,12 @@ A vertical group of 9 cells; There are 9 columns in a traditional 9x9 Sudoku
  8 |   |   |   |   |   |   |   |
 -----------------------------------
  9 |   |   |   |   |   |   |   |
+```
 
 ### Row
 A horizontal group of 9 cells; There are 9 rows in a traditional 9x9 Sudoku
 
+```
  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 -----------------------------------
    |   |   |   |   |   |   |   |
@@ -74,6 +79,7 @@ A horizontal group of 9 cells; There are 9 rows in a traditional 9x9 Sudoku
    |   |   |   |   |   |   |   |
 -----------------------------------
    |   |   |   |   |   |   |   |
+```
 
 ### Sudoku
 A puzzle in which a grid consisting of several cells is to be filled with numbers so that every row, column, and 3x3 box contains only one instance of each number. The most common format is a grid of nine rows and columns that are divided into nine smaller boxes of three rows and three columns into which the numbers 1 through 9 must be placed.
