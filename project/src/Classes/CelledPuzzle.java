@@ -31,7 +31,7 @@ public class CelledPuzzle {
    * @see Cell.mark()
    */
   public void pencilMark(int r, int c){
-    for(int i = 1; i <= grid.length + 1; i++){
+    for(int i = 1; i <= grid.length; i++){
       if(numValid(i, r, c)){
         grid[r][c].mark(i);
       }else{
