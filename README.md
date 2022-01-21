@@ -33,7 +33,7 @@ A 3x3 Cell region; There are 9 boxes in a traditional 9x9 Sudoku, placed in a 3x
 ```
 
 ### Cell
-Refers to any individual input square/spot within a row, column, or box; Holds exactly one number; There 81 cells in a traditional 9x9 Sudoku
+Refers to any individual input square/spot within a row, column, or box; Holds exactly one number; There are 81 cells in a traditional 9x9 Sudoku
 
 ### Column
 A vertical group of 9 cells; There are 9 columns in a traditional 9x9 Sudoku
