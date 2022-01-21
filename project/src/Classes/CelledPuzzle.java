@@ -1,7 +1,7 @@
 package Classes;
 
 public class CelledPuzzle {
-  Cell[][] grid;
+  public Cell[][] grid;
 
   //==============================================================
   // Constructors
@@ -12,9 +12,30 @@ public class CelledPuzzle {
   }
 
   public CelledPuzzle(int[][] g){
+    this.grid = new Cell[9][9];
     for(int i = 0; i < g.length; i++){
       for(int j = 0; j < g.length; j++){
         this.grid[i][j] = new Cell(g[i][j]);
+      }
+    }
+  }
+
+  //==============================================================
+  // Pencil Marks
+  //==============================================================
+
+  /**
+   * Adds pencil marks for valid candidates in grid[r][c]
+   * @param r [int] Row component of coordinate
+   * @param c [int] Column component of coordinate
+   * @see Cell.mark()
+   */
+  public void pencilMark(int r, int c){
+    for(int i = 1; i <= grid.length + 1; i++){
+      if(numValid(i, r, c)){
+        grid[r][c].mark(i);
+      }else{
+        grid[r][c].erase(i);
       }
     }
   }
@@ -86,21 +107,18 @@ public class CelledPuzzle {
   /**
    * Prints Puzzle object in traditional sudoku format (9 rows, 9 columns)
    */
-  public void stringify(){
-      System.out.println();
+    public void stringify(){
+      System.out.println("\n-------------------------------------");
       for(int i = 0; i < grid.length; i++){
+          System.out.print("|");
           for(int j = 0; j < grid.length; j++){
-              if(j == 2 || j == 5){
-                  System.out.print(grid[i][j].getVal() + " | ");
-              }else if(j == 8){
-                  System.out.print(grid[i][j].getVal() + "\n");
+              if(grid[i][j].getVal() != 0){
+                  System.out.print(" " + grid[i][j].getVal() + " |");
               }else{
-                  System.out.print(grid[i][j].getVal() + " ");
+                  System.out.print("   |");
               }
           }
-          if(i == 2 || i == 5){
-              System.out.println("---------------------");
-          }
+          System.out.println("\n-------------------------------------");
       }
       System.out.println();
   }
