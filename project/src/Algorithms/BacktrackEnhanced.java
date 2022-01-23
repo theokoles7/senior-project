@@ -14,10 +14,10 @@ public class BacktrackEnhanced {
      * @param p [SimplePuzzle] Puzzle to be solved
      */
   public static boolean solve(CelledPuzzle p){
-    //p.stringify();
+    //p.stringify();    // Print initial
     pencilMarks(p);
     if(_solve(p)){
-      //p.stringify();
+      //p.stringify();  // Print final
       return true;
     }else{
       return false;
@@ -30,27 +30,25 @@ public class BacktrackEnhanced {
    * utilizes populated pencil marks for testing versus 1 - 9
    * @param p [CelledPuzzle] Puzzle to be solved
    * @return boolean [TRUE] Puzzle is solved successfully or valid 
-   * candidate was found for cell [FALSE] if Sudoku violation is found
+   * candidate was found for cell [FALSE] Sudoku violation is found
    */
   public static boolean _solve(CelledPuzzle p){
-    for(int i = 0; i < p.grid.length; i++){
-        for(int j = 0; j < p.grid.length; j++){
-            if(p.grid[i][j].getVal() == 0){
-                for(int k : p.grid[i][j].pencil_marks){
-                    if(p.numValid(k, i, j)){
-                        p.grid[i][j].setVal(k);
-                        // Used to monitor moves being made by the algorithm
-                        //System.out.println("[" + i + ", " + j + "] = " + k);
-                        if(_solve(p)){
-                            return true;
-                        }else{
-                            p.grid[i][j].setVal(0);
-                        }
-                    }
-                }
-                return false;
+    for(int r = 0; r < p.grid.length; r++){
+      for(int c = 0; c < p.grid.length; c++){
+        if(p.grid[r][c].getVal() == 0){
+          for(int n : p.grid[r][c].pencil_marks){
+            p.grid[r][c].setVal(n);
+            // Used to monitor moves being made by the algorithm
+            //System.out.println("[" + r + ", " + c + "] = " + n);
+            if(_solve(p)){
+              return true;
+            }else{
+              p.grid[r][c].setVal(0);
             }
+          }
+          return false;
         }
+      }
     }
     return true;
   }
