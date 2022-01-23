@@ -34,7 +34,7 @@ If, when the algorithm moves to the next empty cell, there is no valid candidate
 ```
 
 ### Enhanced Backtrack
-An enhanced version of the backtrack algorithm that first populates every cells pencil marks with any valid candidates then tests only those pencil marks as valid entries instead of all numbers 1 - 9.
+An enhanced version of the backtrack algorithm that first populates every empty cell's pencil marks with any valid candidates then tests only those pencil marks as valid entries instead of all numbers 1 - 9.
 ```
 =====================================
 |        ENHANCED BACKTRACK         |
