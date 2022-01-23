@@ -8,10 +8,8 @@ public class BacktrackEnhanced {
      * Acts as the controller for the BacktrackEnhanced 
      * algorithm; First makes the call to @see pencilMarks()
      * and then makes the call to @see _solve().
-     * If the puzzle is solved successfully, "SOLVED" 
-     * is printed along with the solution. Otherwise
-     * "FAILED" is printed and no solution is provided.
      * @param p [SimplePuzzle] Puzzle to be solved
+     * @return boolean [TRUE] Puzzle is solved successfully [FALSE] Failed to solve puzzle
      */
   public static boolean solve(CelledPuzzle p){
     //p.stringify();    // Print initial
