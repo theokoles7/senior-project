@@ -13,9 +13,9 @@ public class CelledPuzzle {
 
   public CelledPuzzle(int[][] g){
     this.grid = new Cell[9][9];
-    for(int i = 0; i < g.length; i++){
-      for(int j = 0; j < g.length; j++){
-        this.grid[i][j] = new Cell(g[i][j]);
+    for(int r = 0; r < g.length; r++){
+      for(int c = 0; c < g.length; c++){
+        this.grid[r][c] = new Cell(g[r][c]);
       }
     }
   }
@@ -32,11 +32,8 @@ public class CelledPuzzle {
    */
   public void pencilMark(int r, int c){
     for(int i = 1; i <= grid.length; i++){
-      if(numValid(i, r, c)){
-        grid[r][c].mark(i);
-      }else{
-        grid[r][c].erase(i);
-      }
+      if(numValid(i, r, c)){ grid[r][c].mark(i);}
+      //else{grid[r][c].erase(i);}
     }
   }
 
@@ -64,8 +61,8 @@ public class CelledPuzzle {
    * @return boolean [TRUE] number is in column [FALSE] number is not in column
    */
   public boolean numInCol(int n, int c){
-    for(int i = 0; i < grid.length; i++){
-      if(grid[i][c].getVal() == n){return true;}
+    for(int r = 0; r < grid.length; r++){
+      if(grid[r][c].getVal() == n){return true;}
     }
     return false;
   }
@@ -109,11 +106,11 @@ public class CelledPuzzle {
    */
     public void stringify(){
       System.out.println("\n-------------------------------------");
-      for(int i = 0; i < grid.length; i++){
+      for(int r = 0; r < grid.length; r++){
           System.out.print("|");
-          for(int j = 0; j < grid.length; j++){
-              if(grid[i][j].getVal() != 0){
-                  System.out.print(" " + grid[i][j].getVal() + " |");
+          for(int c = 0; c < grid.length; c++){
+              if(grid[r][c].getVal() != 0){
+                  System.out.print(" " + grid[r][c].getVal() + " |");
               }else{
                   System.out.print("   |");
               }
