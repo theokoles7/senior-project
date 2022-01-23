@@ -4,8 +4,8 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Cell {
-  public int value;
-  public SortedSet<Integer> pencil_marks;
+  private int value;
+  private SortedSet<Integer> pencil_marks;
 
   //==============================================================
   // Constructors
@@ -68,5 +68,13 @@ public class Cell {
    */
   public boolean erase(int n){
     return this.pencil_marks.remove(n);
+  }
+
+  /**
+   * Returns the cell's pencil marks
+   * @return [SortedSet<Int>] Cell.pencil_marks
+   */
+  public SortedSet<Integer> getPencilMarks(){
+    return this.pencil_marks;
   }
 }

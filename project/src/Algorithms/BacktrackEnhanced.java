@@ -34,14 +34,14 @@ public class BacktrackEnhanced {
     for(int r = 0; r < p.grid.length; r++){
       for(int c = 0; c < p.grid.length; c++){
         if(p.grid[r][c].getVal() == 0){
-          for(int n : p.grid[r][c].pencil_marks){
+          for(int n : p.grid[r][c].getPencilMarks()){
             p.grid[r][c].setVal(n);
             // Used to monitor moves being made by the algorithm
             //System.out.println("[" + r + ", " + c + "] = " + n);
             if(_solve(p)){
               return true;
             }else{
-              p.grid[r][c].setVal(0);
+              p.grid[r][c].resVal();
             }
           }
           return false;
