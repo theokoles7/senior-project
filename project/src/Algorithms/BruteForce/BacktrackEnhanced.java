@@ -66,7 +66,7 @@ public class BacktrackEnhanced {
   public static void pencilMarks(CelledPuzzle p){
     for(int r = 0; r < p.grid.length; r++){
       for(int c = 0; c < p.grid.length; c++){
-        p.pencilMark(r, c);
+        p.pencilMarkCell(r, c);
       }
     }
   }
