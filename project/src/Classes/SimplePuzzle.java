@@ -55,7 +55,7 @@ public class SimplePuzzle {
         int blanks = 0;
         for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
             for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
-                if(grid[r][c] == 0){blanks++;}
+                if(grid[i][j] == 0){blanks++;}
             }
         }
         return blanks;
