@@ -95,7 +95,7 @@ public class Backtrack{
                             if(_solve(p)){
                                 return true;
                             }else{
-                                p.grid[i][j].setVal(0);
+                                p.grid[i][j].resVal();
                             }
                         }
                     }
