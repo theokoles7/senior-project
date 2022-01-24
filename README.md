@@ -62,6 +62,36 @@ An enhanced version of the backtrack algorithm that first populates every empty 
 =====================================
 ```
 
+## Techniques
+
+### Single Blank
+The "single blank" technique simply tests if a cell is the only blank in a row, column, or box and assigns that cells value as the difference of 45 minus the sum of the already existing entries in the row/column/box.
+```
+-------------------------------------
+| 5 | 8 | 6 | 1 | 3 | 2 |   | 4 | 7 |
+-------------------------------------
+|   |   |   |   |   |   | 2 | 1 | 6 |
+-------------------------------------
+| 9 | 1 |   | 7 |   | 4 |   |   | 3 |
+-------------------------------------
+| 8 |   |   |   | 2 |   |   |   |   |
+-------------------------------------
+| 2 |   | 3 | 9 | 1 |   | 7 |   |   |
+-------------------------------------
+| 7 | 9 |   |   |   | 3 | 4 |   | 5 |
+-------------------------------------
+| 6 |   |   |   |   | 1 | 5 |   | 4 |
+-------------------------------------
+| 1 | 5 |   |   | 4 |   | 6 | 7 | 2 |
+-------------------------------------
+| 3 |   |   | 2 |   |   | 1 | 8 | 9 |
+-------------------------------------
+
+[0, 6] = 9 (Single Blank in row)
+[1, 0] = 4 (Single Blank in col)
+[6, 7] = 3 (Single Blank in box)
+```
+
 ## Terminology
 
 ### Band
