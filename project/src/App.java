@@ -3,11 +3,12 @@ import Classes.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        //runBacktrack();
+        runBacktrack();
         runEnhancedBacktrack();
     }
 
     public static void runBacktrack(){
+        PuzzleBank puzzles = new PuzzleBank();
         System.out.print(
             "\n=====================================" +
             "\n|      BACKTRACK (BRUTE FORCE)      |" +
@@ -16,7 +17,7 @@ public class App {
             "\n|-----------------------------------|"
         );
 
-        for(int[][] p : Puzzles.easy){
+        for(int[][] p : puzzles.easy){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -27,7 +28,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.medium){
+        for(int[][] p : puzzles.medium){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -38,7 +39,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.hard){
+        for(int[][] p : puzzles.hard){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -49,7 +50,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.expert){
+        for(int[][] p : puzzles.expert){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -60,7 +61,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.evil){
+        for(int[][] p : puzzles.evil){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -71,7 +72,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.minimum_clues){
+        for(int[][] p : puzzles.minimum_clues){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -87,6 +88,7 @@ public class App {
     }
 
     public static void runEnhancedBacktrack(){
+        PuzzleBank puzzles = new PuzzleBank();
         System.out.print(
             "\n=====================================" +
             "\n|        ENHANCED BACKTRACK         |" +
@@ -95,7 +97,7 @@ public class App {
             "\n|-----------------------------------|"
         );
 
-        for(int[][] p : Puzzles.easy){
+        for(int[][] p : puzzles.easy){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -106,7 +108,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.medium){
+        for(int[][] p : puzzles.medium){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -117,7 +119,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.hard){
+        for(int[][] p : puzzles.hard){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -128,7 +130,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.expert){
+        for(int[][] p : puzzles.expert){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -139,7 +141,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.evil){
+        for(int[][] p : puzzles.evil){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(
@@ -150,7 +152,7 @@ public class App {
             );
         }
 
-        for(int[][] p : Puzzles.minimum_clues){
+        for(int[][] p : puzzles.minimum_clues){
             CelledPuzzle cp = new CelledPuzzle(p);
             double time = System.nanoTime();
             System.out.printf(

@@ -1,8 +1,8 @@
 // This file holds example puzzles of various difficulties used for testing.
 
-public class Puzzles{
+public class PuzzleBank{
 
-  public static final int[][][] easy = {
+  public final int[][][] easy = {
     {
       {5, 8, 0, 1, 0, 2, 0, 4, 0},
       {0, 0, 0, 0, 0, 0, 2, 1, 6},
@@ -38,7 +38,7 @@ public class Puzzles{
     }
   };
 
-  public static final int[][][] medium = {
+  public final int[][][] medium = {
     {
       {7, 6, 0, 0, 0, 0, 0, 1, 0},
       {5, 0, 0, 1, 6, 0, 0, 0, 4},
@@ -74,7 +74,7 @@ public class Puzzles{
     }
   };
 
-  public static final int[][][] hard = {
+  public final int[][][] hard = {
     {
       {0, 1, 0, 0, 0, 8, 9, 0, 0},
       {7, 0, 3, 4, 0, 0, 0, 0, 5},
@@ -110,7 +110,7 @@ public class Puzzles{
     }
   };
 
-  public static final int[][][] expert = {
+  public final int[][][] expert = {
     {
       {0, 1, 3, 0, 0, 7, 0, 0, 6},
       {0, 0, 0, 0, 0, 0, 0, 2, 4},
@@ -146,7 +146,7 @@ public class Puzzles{
     }
   };
 
-  public static final int[][][] evil =  {
+  public final int[][][] evil =  {
     {
       {0, 8, 0, 0, 9, 0, 7, 5, 0},
       {5, 0, 0, 0, 0, 0, 0, 0, 2},
@@ -182,7 +182,7 @@ public class Puzzles{
     }
   };
 
-  public static final int[][][] minimum_clues = {
+  public final int[][][] minimum_clues = {
     {
       {0, 0, 0, 0, 0, 0, 0, 1, 5},
       {0, 2, 0, 0, 6, 0, 0, 0, 0},
