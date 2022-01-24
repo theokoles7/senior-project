@@ -16,6 +16,52 @@ public class SimplePuzzle {
     }
 
     //==============================================================
+    // Blanks
+    //==============================================================
+
+    /**
+     * Returns the quantity of blank cells in specified row
+     * @param r [int] Row to be analyzed
+     * @return [int] Quantity of blanks in row r
+     */
+    public int blankInRow(int r){
+        int blanks = 0;
+        for(int n : grid[r]){
+            if(n == 0){blanks++;}
+        }
+        return blanks;
+    }
+
+    /**
+     * Returns the quantity of blank cells in specified column
+     * @param c [int] Column to be analyzed
+     * @return [int] Qantity of blanks in column c
+     */
+    public int blankInCol(int c){
+        int blanks = 0;
+        for(int r = 0; r < grid.length; r++){
+            if(grid[r][c] == 0){blanks++;}
+        }
+        return blanks;
+    }
+
+    /**
+     * Returns the quantity of blank cells in box containing specified coordinates
+     * @param r [int] Row component of coordinate
+     * @param c [int] Column component of coordinate
+     * @return [int] Quantity of blanks cells in box containing (r, c)
+     */
+    public int blankInBox(int r, int c){
+        int blanks = 0;
+        for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
+            for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
+                if(grid[i][j] == 0){blanks++;}
+            }
+        }
+        return blanks;
+    }
+
+    //==============================================================
     // Candidate Validation
     //==============================================================
 

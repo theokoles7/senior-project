@@ -1,6 +1,19 @@
-package Algorithms;
+package Algorithms.BruteForce;
 
 import Classes.*;
+
+/**
+ * The back track algorithm works by traversing every empty cell in the 
+ * grid (row by row, column by column) and tests each of the numbers 1 
+ * through 9 as valid candidates in the cell. If a number is found to be 
+ * a valid candidate (meaning that it violates none of the rules of Sudoku), 
+ * that number is assigned to the cell. If, when the algorithm moves to 
+ * the next empty cell, there is no valid candidate, that simply means 
+ * that the number previously entered was an invalid entry after all. 
+ * The back track mechanism of the algorithm is then utilized to go 
+ * back to the previous cell and find the next valid candidate before 
+ * again moving on to the following empty cells.
+ */
 
 public class Backtrack{
 
@@ -95,7 +108,7 @@ public class Backtrack{
                             if(_solve(p)){
                                 return true;
                             }else{
-                                p.grid[i][j].setVal(0);
+                                p.grid[i][j].resVal();
                             }
                         }
                     }

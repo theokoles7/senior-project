@@ -1,6 +1,12 @@
-package Algorithms;
+package Algorithms.BruteForce;
 
 import Classes.*;
+
+/**
+ * An enhanced version of the backtrack algorithm that first populates 
+ * every empty cell's pencil marks with any valid candidates then tests 
+ * only those pencil marks as valid entries instead of all numbers 1 - 9.
+ */
 
 public class BacktrackEnhanced {
   

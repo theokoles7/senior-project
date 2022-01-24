@@ -21,6 +21,112 @@ public class CelledPuzzle {
   }
 
   //==============================================================
+  // Blanks
+  //==============================================================
+
+  /**
+   * Returns the quantity of blanks cells in specified row
+   * @param r [int] Row to be analyzed
+   * @return [int] Quantity of blanks cells in row r
+   */
+  public int blankInRow(int r){
+    int blanks = 0;
+    for(Cell c : grid[r]){
+      if(c.getVal() == 0){blanks++;}
+    }
+    return blanks;
+  }
+
+  /**
+   * Returns the quantity of blank cells in specified column
+   * @param c [int] Column to be analyzed
+   * @return [int] Qantity of blanks in column c
+   */
+  public int blankInCol(int c){
+      int blanks = 0;
+      for(int r = 0; r < grid.length; r++){
+          if(grid[r][c].getVal() == 0){blanks++;}
+      }
+      return blanks;
+  }
+
+  /**
+   * Returns the quantity of blank cells in box containing specified coordinates
+   * @param r [int] Row component of coordinate
+   * @param c [int] Column component of coordinate
+   * @return [int] Quantity of blanks cells in box containing (r, c)
+   */
+  public int blankInBox(int r, int c){
+      int blanks = 0;
+      for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
+          for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
+              if(grid[i][j].getVal() == 0){blanks++;}
+          }
+      }
+      return blanks;
+  }
+
+  //==============================================================
+  // Candidate Validation
+  //==============================================================
+
+  /**
+   * Returns true if number n already exists in row r
+   * @param n [int] Number to be searched for
+   * @param r [int] Row to be searched
+   * @return  boolean [TRUE] number is in row [FALSE] number is not in row
+   */
+  public boolean numInRow(int n, int r){
+    for(Cell c : grid[r]){
+      if(c.getVal() == n){return true;}
+    }
+    return false;
+  }
+
+  /**
+   * Returns true if number n already exists in column c
+   * @param n [int] Number to be searched for
+   * @param c [int] Column to be searched
+   * @return boolean [TRUE] number is in column [FALSE] number is not in column
+   */
+  public boolean numInCol(int n, int c){
+    for(int r = 0; r < grid.length; r++){
+      if(grid[r][c].getVal() == n){return true;}
+    }
+    return false;
+  }
+
+  /**
+   * Returns true if number n already exists in box containing coordinate (r, c)
+   * @param n [int] Number to be searched for
+   * @param r [int] Row component of coordinate 
+   * @param c [int] Column component of coordinate
+   * @return boolean [TRUE] number is in box [FALSE] number is not in box
+   */
+  public boolean numInBox(int n, int r, int c){
+    for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
+      for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
+        if(grid[i][j].getVal() == n){return true;}
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Returns true if number n is a valid candidate for coordinate (r, c)
+   * @param n [int] Number to be searched for
+   * @param r [int] Row component of coordinate
+   * @param c [int] Column component of coordinate
+   * @return boolean [TRUE] number is a valid candidate [FALSE] number is not a valid candidate
+   * @see numInRow(), numInCol(), numInBox()
+   */
+  public boolean numValid(int n, int r, int c){
+      return !numInRow(n, r)
+      && !numInCol(n, c)
+      && !numInBox(n, r, c);
+  }
+
+  //==============================================================
   // Difference
   //==============================================================
 
@@ -51,6 +157,23 @@ public class CelledPuzzle {
    */
   public int diffBox(int r, int c){
       return 45 - sumBox(r, c);
+  }
+
+  //==============================================================
+  // Pencil Marks
+  //==============================================================
+
+  /**
+   * Adds pencil marks for valid candidates in grid[r][c]
+   * @param r [int] Row component of coordinate
+   * @param c [int] Column component of coordinate
+   * @see Cell.mark()
+   */
+  public void pencilMark(int r, int c){
+    for(int i = 1; i <= grid.length; i++){
+      if(numValid(i, r, c)){ grid[r][c].mark(i);}
+      //else{grid[r][c].erase(i);}
+    }
   }
 
   //==============================================================
@@ -98,83 +221,6 @@ public class CelledPuzzle {
           }
       }
       return sum;
-  }
-
-  //==============================================================
-  // Pencil Marks
-  //==============================================================
-
-  /**
-   * Adds pencil marks for valid candidates in grid[r][c]
-   * @param r [int] Row component of coordinate
-   * @param c [int] Column component of coordinate
-   * @see Cell.mark()
-   */
-  public void pencilMark(int r, int c){
-    for(int i = 1; i <= grid.length; i++){
-      if(numValid(i, r, c)){ grid[r][c].mark(i);}
-      //else{grid[r][c].erase(i);}
-    }
-  }
-
-  //==============================================================
-  // Candidate Validation
-  //==============================================================
-
-  /**
-   * Returns true if number n already exists in row r
-   * @param n Number to be searched for
-   * @param r Row to be searched
-   * @return  boolean [TRUE] number is in row [FALSE] number is not in row
-   */
-  public boolean numInRow(int n, int r){
-    for(Cell c : grid[r]){
-      if(c.getVal() == n){return true;}
-    }
-    return false;
-  }
-
-  /**
-   * Returns true if number n already exists in column c
-   * @param n Number to be searched for
-   * @param c Column to be searched
-   * @return boolean [TRUE] number is in column [FALSE] number is not in column
-   */
-  public boolean numInCol(int n, int c){
-    for(int r = 0; r < grid.length; r++){
-      if(grid[r][c].getVal() == n){return true;}
-    }
-    return false;
-  }
-
-  /**
-   * Returns true if number n already exists in box containing coordinate (r, c)
-   * @param n Number to be searched for
-   * @param r Row component of coordinate 
-   * @param c Column component of coordinate
-   * @return boolean [TRUE] number is in box [FALSE] number is not in box
-   */
-  public boolean numInBox(int n, int r, int c){
-    for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
-      for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
-        if(grid[i][j].getVal() == n){return true;}
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Returns true if number n is a valid candidate for coordinate (r, c)
-   * @param n Number to be searched for
-   * @param r Row component of coordinate
-   * @param c Column component of coordinate
-   * @return boolean [TRUE] number is a valid candidate [FALSE] number is not a valid candidate
-   * @see numInRow(), numInCol(), numInBox()
-   */
-  public boolean numValid(int n, int r, int c){
-      return !numInRow(n, r)
-      && !numInCol(n, c)
-      && !numInBox(n, r, c);
   }
 
   //==============================================================
