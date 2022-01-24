@@ -1,4 +1,4 @@
-import Algorithms.*;
+import Algorithms.BruteForce.*;
 import Classes.*;
 
 public class App {
