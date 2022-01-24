@@ -21,6 +21,86 @@ public class CelledPuzzle {
   }
 
   //==============================================================
+  // Difference
+  //==============================================================
+
+  /**
+   * Returns the difference of 45 minus the sum of the specified row
+   * @param r [int] Row to be subtracted
+   * @return [int] Difference of 45 - @see sumRow(r)
+   */
+  public int diffRow(int r){
+      return 45 - sumRow(r);
+  }
+
+  /**
+   * Returns the difference of 45 minus the sum of the specified column
+   * @param c [int] Column to be subtracted
+   * @return [int] Difference of 45 - @see sumCol(c)
+   */
+  public int diffCol(int c){
+      return 45 - sumCol(c);
+  }
+
+  /**
+   * Returns the difference of 45 minus the sum of the box containing 
+   * the specified (r, c) coordinate
+   * @param r [int] Row component of coordinate
+   * @param c [int] Column component of coordinate
+   * @return [int] Difference of 45 - @see sumBox(r, c)
+   */
+  public int diffBox(int r, int c){
+      return 45 - sumBox(r, c);
+  }
+
+  //==============================================================
+  // Sum
+  //==============================================================
+
+  /**
+   * Returns the sum of the already existing entries withing the specified row
+   * @param r [int] Row to be summed
+   * @return [int] Sum of the row
+   */
+  public int sumRow(int r){
+      int sum = 0;
+      for(Cell c : grid[r]){
+          sum += c.getVal();
+      }
+      return sum;
+  }
+  
+  /**
+   * Returns the sum of the already existing entries within the specified column
+   * @param c [int] Column to be summed
+   * @return [int] Sum of the column
+   */
+  public int sumCol(int c){
+      int sum = 0;
+      for(int r = 0; r < grid.length; r++){
+          sum += grid[r][c].getVal();
+      }
+      return sum;
+  }
+
+  /**
+   * Returns the sum of the already existing entries within the box containing 
+   * the spcified (r, c) coordinate
+   * @param r [int] Row component of coordinate
+   * @param c [int] Column component of coordinate
+   * @return [int] Sum of the box
+   */
+  public int sumBox(int r, int c){
+      int sum = 0;
+      for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
+          for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
+              sum += grid[i][j].getVal();
+          }
+      }
+      return sum;
+  }
+
+  //==============================================================
   // Pencil Marks
   //==============================================================
 
