@@ -1,11 +1,10 @@
 package Classes;
 
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 public class Cell {
   private int value;
-  private SortedSet<Integer> pencil_marks;
+  private ArrayList<Integer> pencil_marks;
 
   //==============================================================
   // Constructors
@@ -13,12 +12,12 @@ public class Cell {
 
   public Cell(){
     this.value = 0;
-    this.pencil_marks = new TreeSet<>();
+    this.pencil_marks = new ArrayList<>();
   }
 
   public Cell(int v){
     this.value = v;
-    this.pencil_marks = new TreeSet<>();
+    this.pencil_marks = new ArrayList<>();
   }
 
   //==============================================================
@@ -66,7 +65,7 @@ public class Cell {
    * @param n [int] Number to be removed from pencil marks
    * @return [TRUE] Number was removed [FALSE] Number did not exist
    */
-  public boolean erase(int n){
+  public boolean erase(Integer n){
     return this.pencil_marks.remove(n);
   }
 
@@ -74,7 +73,7 @@ public class Cell {
    * Returns the cell's pencil marks
    * @return [SortedSet<Int>] Cell.pencil_marks
    */
-  public SortedSet<Integer> getPencilMarks(){
+  public ArrayList<Integer> getPencilMarks(){
     return this.pencil_marks;
   }
 }
