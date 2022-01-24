@@ -7,6 +7,9 @@ public class App {
         runEnhancedBacktrack();
     }
 
+    /**
+     * Runs the back track algorithm on 18 puzzles of varying difficulty
+     */
     public static void runBacktrack(){
         PuzzleBank puzzles = new PuzzleBank();
         String diff;
@@ -46,6 +49,9 @@ public class App {
         );
     }
 
+    /**
+     * Runs the enhanced back track algorithm on 18 puzzles of varying difficulty
+     */
     public static void runEnhancedBacktrack(){
         PuzzleBank puzzles = new PuzzleBank();
         String diff;
