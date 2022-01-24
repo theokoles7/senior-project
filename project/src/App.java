@@ -36,7 +36,7 @@ public class App {
                 CelledPuzzle cp = new CelledPuzzle(p);
                 double time = System.nanoTime();
                 System.out.printf(
-                    "\n|%-14s %-5b  %10.2f ms|",
+                    "\n|%-14s %-5b %11.2f ms|",
                     diff,
                     Backtrack.solve(cp),
                     (System.nanoTime() - time) / 1000000
@@ -78,7 +78,7 @@ public class App {
                 CelledPuzzle cp = new CelledPuzzle(p);
                 double time = System.nanoTime();
                 System.out.printf(
-                    "\n|%-14s %-5b  %10.2f ms|",
+                    "\n|%-14s %-5b %11.2f ms|",
                     diff,
                     BacktrackEnhanced.solve(cp),
                     (System.nanoTime() - time) / 1000000
