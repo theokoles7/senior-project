@@ -52,7 +52,7 @@ public class App {
         int outer = 0;
         System.out.print(
             "\n=====================================" +
-            "\n|      BACKTRACK (BRUTE FORCE)      |" +
+            "\n|         ENHANCED BACKTRACK        |" +
             "\n|===================================|" +
             "\n|DIFFICULTY     SOLVED          TIME|" +
             "\n|-----------------------------------|"
