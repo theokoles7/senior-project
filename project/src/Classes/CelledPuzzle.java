@@ -123,8 +123,8 @@ public class CelledPuzzle {
 
   /**
    * Returns true if number n already exists in row r
-   * @param n Number to be searched for
-   * @param r Row to be searched
+   * @param n [int] Number to be searched for
+   * @param r [int] Row to be searched
    * @return  boolean [TRUE] number is in row [FALSE] number is not in row
    */
   public boolean numInRow(int n, int r){
@@ -136,8 +136,8 @@ public class CelledPuzzle {
 
   /**
    * Returns true if number n already exists in column c
-   * @param n Number to be searched for
-   * @param c Column to be searched
+   * @param n [int] Number to be searched for
+   * @param c [int] Column to be searched
    * @return boolean [TRUE] number is in column [FALSE] number is not in column
    */
   public boolean numInCol(int n, int c){
@@ -149,9 +149,9 @@ public class CelledPuzzle {
 
   /**
    * Returns true if number n already exists in box containing coordinate (r, c)
-   * @param n Number to be searched for
-   * @param r Row component of coordinate 
-   * @param c Column component of coordinate
+   * @param n [int] Number to be searched for
+   * @param r [int] Row component of coordinate 
+   * @param c [int] Column component of coordinate
    * @return boolean [TRUE] number is in box [FALSE] number is not in box
    */
   public boolean numInBox(int n, int r, int c){
@@ -165,9 +165,9 @@ public class CelledPuzzle {
 
   /**
    * Returns true if number n is a valid candidate for coordinate (r, c)
-   * @param n Number to be searched for
-   * @param r Row component of coordinate
-   * @param c Column component of coordinate
+   * @param n [int] Number to be searched for
+   * @param r [int] Row component of coordinate
+   * @param c [int] Column component of coordinate
    * @return boolean [TRUE] number is a valid candidate [FALSE] number is not a valid candidate
    * @see numInRow(), numInCol(), numInBox()
    */
