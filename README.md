@@ -64,27 +64,50 @@ An enhanced version of the backtrack algorithm that first populates every empty 
 
 ## Terminology
 
+### Band
+A horizontal group of 3 boxes; There are 3 bands in a traditional 9x9 Sudoku
+
+```
+           |           |         
+                                   
+     1     |     2     |     3  
+                                   
+           |           |        
+-----------------------------------
+           |           |        
+                                   
+           |           |        
+ 
+           |           |        
+-----------------------------------
+           |           |        
+ 
+           |           |        
+ 
+           |           |        
+```
+
 ### Box
 A 3x3 Cell region; There are 9 boxes in a traditional 9x9 Sudoku, placed in a 3x3 arrangement; Can be thought of as a smaller grid, with 3 columns, 3 rows, and a total of 9 cells
 
 ```
- 1 | 2 | 3 |   |   |   |   |   | 
+           |           |         
+                                   
+     1     |     2     |     3  
+                                   
+           |           |        
 -----------------------------------
- 4 | 5 | 6 |   |   |   |   |   |
+           |           |        
+                                   
+     4     |     5     |     6  
+ 
+           |           |        
 -----------------------------------
- 7 | 8 | 9 |   |   |   |   |   |
------------------------------------
-   |   |   |   |   |   |   |   |
------------------------------------
-   |   |   |   |   |   |   |   |
------------------------------------
-   |   |   |   |   |   |   |   |
------------------------------------
-   |   |   |   |   |   |   |   |
------------------------------------
-   |   |   |   |   |   |   |   |
------------------------------------
-   |   |   |   |   |   |   |   |
+           |           |        
+ 
+     7     |     8     |     9  
+ 
+           |           |        
 ```
 
 ### Cell
@@ -113,6 +136,9 @@ A vertical group of 9 cells; There are 9 columns in a traditional 9x9 Sudoku
  9 |   |   |   |   |   |   |   |
 ```
 
+### Grid
+The 9x9 cell structure that makes up a traditional 9x9 Sudoku; The grid contains all 81 cells in a 9x9 configuration, along with 9 rows, 9 columns, 9 boxes, 3 bands, and 3 stacks
+
 ### Row
 A horizontal group of 9 cells; There are 9 rows in a traditional 9x9 Sudoku
 
@@ -135,6 +161,30 @@ A horizontal group of 9 cells; There are 9 rows in a traditional 9x9 Sudoku
 -----------------------------------
    |   |   |   |   |   |   |   |
 ```
+
+### Stack
+A vertical group of 3 boxes; There are 3 stacks in a traditional 9x9 Sudoku
+
+```
+           |           |         
+                                   
+     1     |           |       
+                                   
+           |           |        
+-----------------------------------
+           |           |        
+                                   
+     2     |           |        
+ 
+           |           |        
+-----------------------------------
+           |           |        
+ 
+     3     |           |        
+ 
+           |           |        
+```
+
 
 ### Sudoku
 A puzzle in which a grid consisting of several cells is to be filled with numbers so that every row, column, and 3x3 box contains only one instance of each number. The most common format is a grid of nine rows and columns that are divided into nine smaller boxes of three rows and three columns into which the numbers 1 through 9 must be placed.
