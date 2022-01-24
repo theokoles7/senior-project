@@ -217,4 +217,6 @@ public class PuzzleBank{
       {0, 0, 0, 1, 0, 0, 0, 0, 0}
     }
   };
+
+  public final int[][][][] bank = {easy, medium, hard, expert, evil, minimum_clues};
 }

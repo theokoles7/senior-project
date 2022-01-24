@@ -9,6 +9,8 @@ public class App {
 
     public static void runBacktrack(){
         PuzzleBank puzzles = new PuzzleBank();
+        String diff;
+        int outer = 0;
         System.out.print(
             "\n=====================================" +
             "\n|      BACKTRACK (BRUTE FORCE)      |" +
@@ -17,70 +19,27 @@ public class App {
             "\n|-----------------------------------|"
         );
 
-        for(int[][] p : puzzles.easy){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "EASY",
-                Backtrack.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.medium){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "MEDIUM",
-                Backtrack.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.hard){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "HARD",
-                Backtrack.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.expert){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "EXPERT",
-                Backtrack.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.evil){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "EVIL",
-                Backtrack.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.minimum_clues){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "17 Clues",
-                Backtrack.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
+        for(int[][][] level : puzzles.bank){
+            switch(outer){
+                case 0: diff = "EASY"; break;
+                case 1: diff = "MEDIUM"; break;
+                case 2: diff = "HARD"; break;
+                case 3: diff = "EXPERT"; break;
+                case 4: diff = "EVIL"; break;
+                case 5: diff = "17 CLUES"; break;
+                default: diff = "ERROR"; break;
+            }
+            for(int[][] p : level){
+                CelledPuzzle cp = new CelledPuzzle(p);
+                double time = System.nanoTime();
+                System.out.printf(
+                    "\n|%-14s %-5b  %10.2f ms|",
+                    diff,
+                    Backtrack.solve(cp),
+                    (System.nanoTime() - time) / 1000000
+                );
+            }
+            outer++;
         }
         System.out.println(
             "\n=====================================\n"
@@ -89,78 +48,37 @@ public class App {
 
     public static void runEnhancedBacktrack(){
         PuzzleBank puzzles = new PuzzleBank();
+        String diff;
+        int outer = 0;
         System.out.print(
             "\n=====================================" +
-            "\n|        ENHANCED BACKTRACK         |" +
+            "\n|      BACKTRACK (BRUTE FORCE)      |" +
             "\n|===================================|" +
             "\n|DIFFICULTY     SOLVED          TIME|" +
             "\n|-----------------------------------|"
         );
 
-        for(int[][] p : puzzles.easy){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "EASY",
-                BacktrackEnhanced.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.medium){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "MEDIUM",
-                BacktrackEnhanced.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.hard){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "HARD",
-                BacktrackEnhanced.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.expert){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "EXPERT",
-                BacktrackEnhanced.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.evil){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "EVIL",
-                BacktrackEnhanced.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
-        }
-
-        for(int[][] p : puzzles.minimum_clues){
-            CelledPuzzle cp = new CelledPuzzle(p);
-            double time = System.nanoTime();
-            System.out.printf(
-                "\n|%-14s %-5b  %10.2f ms|",
-                "17 Clues",
-                BacktrackEnhanced.solve(cp),
-                (System.nanoTime() - time) / 1000000
-            );
+        for(int[][][] level : puzzles.bank){
+            switch(outer){
+                case 0: diff = "EASY"; break;
+                case 1: diff = "MEDIUM"; break;
+                case 2: diff = "HARD"; break;
+                case 3: diff = "EXPERT"; break;
+                case 4: diff = "EVIL"; break;
+                case 5: diff = "17 CLUES"; break;
+                default: diff = "ERROR"; break;
+            }
+            for(int[][] p : level){
+                CelledPuzzle cp = new CelledPuzzle(p);
+                double time = System.nanoTime();
+                System.out.printf(
+                    "\n|%-14s %-5b  %10.2f ms|",
+                    diff,
+                    BacktrackEnhanced.solve(cp),
+                    (System.nanoTime() - time) / 1000000
+                );
+            }
+            outer++;
         }
         System.out.println(
             "\n=====================================\n"
