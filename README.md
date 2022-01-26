@@ -92,6 +92,159 @@ The "single blank" technique simply tests if a cell is the only blank in a row, 
 [6, 7] = 3 (Single Blank in box)
 ```
 
+### Naked Pair
+A Naked Pair (also known as a Conjugate Pair) is a set of two candidate numbers (pencil marks) sited in two cells that belong to at least one unit in common. That is, they reside in the same row, column or box. When two such cells are found, their pencil marks can be safely eleminated from all other cells in the row/column/box.
+```
+=====================================
+|          Naked Pair Test          |
+|===================================|
+-------------------------------------
+|   | 8 |   |   | 9 |   |   | 3 |   |
+-------------------------------------
+|   | 3 |   |   |   |   |   | 6 | 9 |
+-------------------------------------
+| 9 |   | 2 |   | 6 | 3 | 1 | 5 | 8 |
+-------------------------------------
+|   | 2 |   | 8 |   | 4 | 5 | 9 |   |
+-------------------------------------
+| 8 | 5 | 1 | 9 |   | 7 |   | 4 | 6 |
+-------------------------------------
+| 3 | 9 | 4 | 6 |   | 5 | 8 | 7 |   |
+-------------------------------------
+| 5 | 6 | 3 |   | 4 |   | 9 | 8 | 7 |
+-------------------------------------
+| 2 |   |   |   |   |   |   | 1 | 5 |
+-------------------------------------
+|   | 1 |   |   | 5 |   |   | 2 |   |
+-------------------------------------
+
+Candidates before nakedPair():
+[6, 0] = []
+[6, 1] = []
+[6, 2] = []
+[7, 0] = []
+[7, 1] = [4, 7]
+[7, 2] = [7, 8, 9]
+[8, 0] = [4, 7]
+[8, 1] = []
+[8, 2] = [7, 8, 9]
+
+Naked pair found: true
+
+Candidates after nakedPair():
+[6, 0] = []
+[6, 1] = []
+[6, 2] = []
+[7, 0] = []
+[7, 1] = [4, 7]
+[7, 2] = [8, 9]
+[8, 0] = [4, 7]
+[8, 1] = []
+[8, 2] = [8, 9]
+```
+
+### Naked Triple
+Any group of three cells in the same row/column/box that contain IN TOTAL three candidates is a Naked Triple. Each cell can have two or three numbers, as long as in combination all three cells have only three numbers. When this happens, the three candidates can be removed from all other cells in the same unit.
+```
+=====================================
+|         Naked Triple Test         |
+|===================================|
+-------------------------------------
+|   | 7 |   | 4 |   | 8 |   | 2 | 9 |
+-------------------------------------
+|   |   | 2 |   |   |   |   |   | 4 |
+-------------------------------------
+| 8 | 5 | 4 |   | 2 |   |   |   | 7 |
+-------------------------------------
+|   |   | 8 | 3 | 7 | 4 | 2 |   |   |
+-------------------------------------
+|   | 2 |   |   |   |   |   |   |   |
+-------------------------------------
+|   |   | 3 | 2 | 6 | 1 | 7 |   |   |
+-------------------------------------
+|   |   |   |   | 9 | 3 | 6 | 1 | 2 |
+-------------------------------------
+| 2 |   |   |   |   |   | 4 |   | 3 |
+-------------------------------------
+| 1 | 3 |   | 6 | 4 | 2 |   | 7 |   |
+-------------------------------------
+
+Candidates before nakedTriple():
+[4, 0] = [4, 5, 6, 7, 9]
+[4, 1] = []
+[4, 2] = [1, 5, 6, 7, 9]
+[4, 3] = [5, 8, 9]
+[4, 4] = [5, 8]
+[4, 5] = [5, 9]
+[4, 6] = [1, 3, 5, 8, 9]
+[4, 7] = [3, 4, 5, 6, 8, 9]
+[4, 8] = [1, 5, 6, 8]
+
+Naked triple found: true
+
+Candidates after nakedTriple():
+[4, 0] = [4, 6, 7]
+[4, 1] = []
+[4, 2] = [1, 6, 7]
+[4, 3] = [5, 8, 9]
+[4, 4] = [5, 8]
+[4, 5] = [5, 9]
+[4, 6] = [1, 3]
+[4, 7] = [3, 4, 6]
+[4, 8] = [1, 6]
+```
+
+### Naked Quad
+A Naked Quad is rarer, especially in its full form, but is still useful if it can be spotted. The same logic from Naked Triples applies, but the reason it is so rare is because if a Quad is present, the remaining cells are more likely to be a Triple or Pair and the solver will highlight those first. Following the same logic as naked pairs/triples, a naked quad can be eliminated from all other cells in the row/column/box within which the quad is found.
+```
+=====================================
+|          Naked Quad Test          |
+|===================================|
+-------------------------------------
+|   |   |   |   | 3 |   |   | 8 | 6 |
+-------------------------------------
+|   |   |   |   | 2 |   |   | 4 |   |
+-------------------------------------
+|   | 9 |   |   | 7 | 8 | 5 | 2 |   |
+-------------------------------------
+| 3 | 7 | 1 | 8 | 5 | 6 | 2 | 9 | 4 |
+-------------------------------------
+| 9 |   |   | 1 | 4 | 2 | 3 | 7 | 5 |
+-------------------------------------
+| 4 |   |   | 3 | 9 | 7 | 6 | 1 | 8 |
+-------------------------------------
+| 2 |   |   | 7 |   | 3 | 8 | 5 | 9 |
+-------------------------------------
+|   | 3 | 9 | 2 |   | 5 | 4 | 6 | 7 |
+-------------------------------------
+| 7 |   |   | 9 |   | 4 | 1 | 3 | 2 |
+-------------------------------------
+
+Candidates before nakedQuad():
+[0, 0] = [1, 5]
+[0, 1] = [1, 2, 4, 5]
+[0, 2] = [2, 4, 5, 7]
+[1, 0] = [1, 5, 6, 8]
+[1, 1] = [1, 5, 6, 8]
+[1, 2] = [3, 5, 6, 7, 8]
+[2, 0] = [1, 6]
+[2, 1] = []
+[2, 2] = [3, 4, 6]
+
+Naked Quad Found: true
+
+Candidates after nakedQuad():
+[0, 0] = [1, 5]
+[0, 1] = [2, 4]
+[0, 2] = [2, 4, 7]
+[1, 0] = [1, 5, 6, 8]
+[1, 1] = [1, 5, 6, 8]
+[1, 2] = [3, 7]
+[2, 0] = [1, 6]
+[2, 1] = []
+[2, 2] = [3, 4]
+```
+
 ## Terminology
 
 ### Band
