@@ -2,6 +2,7 @@ package Algorithms.Techniques;
 
 import Classes.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * 'Naked' in this context refers to all the remaining possible 
@@ -13,8 +14,9 @@ import java.util.ArrayList;
 public class NakedCandidates {
 
   public static void main(String args[]){
-    //testNakedPairs();
-    testNakedTriples();
+    testNakedPairs();
+    //testNakedTriples();
+    //testNakedQuads();
   }
 
   //==============================================================
@@ -22,7 +24,7 @@ public class NakedCandidates {
   //==============================================================
 
   /**
-   * Passes ArrayList of blanks cells from row r to @see nakedPair()
+   * Passes ArrayList of blank cells from row r to @see nakedPair()
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row to be searched
    * @return @see nakedPair()
@@ -34,7 +36,7 @@ public class NakedCandidates {
   }
 
   /**
-   * Passes ArrayList of blanks cells from column c to @see nakedPair()
+   * Passes ArrayList of blank cells from column c to @see nakedPair()
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param c [int] Column to be searched
    * @return @see nakedPair()
@@ -44,7 +46,7 @@ public class NakedCandidates {
   }
 
   /**
-   * Passes ArrayList of blanks cells from box containing
+   * Passes ArrayList of blank cells from box containing
    * the cell (r, c) to @see nakedPair()
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row component of cell coordinate
@@ -66,19 +68,20 @@ public class NakedCandidates {
    */
   public static boolean nakedPair(ArrayList<Cell> blanks){
     for(int i = 0; i < blanks.size() - 1; i++){
-      for(int j = i + 1; j < blanks.size(); j++){
-        if(
-          blanks.get(i).getPencilMarks().size() == 2 
-          && blanks.get(i).getPencilMarks().equals(blanks.get(j).getPencilMarks())
-          ){
-            blanks.remove(j);
-            Cell temp = blanks.remove(i);
-            for(Cell cell : blanks){
-              for(int n : temp.getPencilMarks()){
-                cell.erase(n);
+      ArrayList<Integer> ipm = blanks.get(i).getPencilMarks();
+      if(ipm.size() == 2){
+        for(int j = i + 1; j < blanks.size(); j++){
+          ArrayList<Integer> jpm = blanks.get(j).getPencilMarks();
+          if(ipm.equals(jpm)){
+              blanks.remove(j);
+              blanks.remove(i);
+              for(Cell cell : blanks){
+                for(int n : ipm){
+                  cell.erase(n);
+                }
               }
-            }
-            return true;
+              return true;
+          }
         }
       }
     }
@@ -90,7 +93,7 @@ public class NakedCandidates {
   //==============================================================
 
   /**
-   * Passes ArrayList of blanks cells from row r to @see nakedTriple()
+   * Passes ArrayList of blank cells from row r to @see nakedTriple()
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row to be searched
    * @return @see nakedTriple()
@@ -102,7 +105,7 @@ public class NakedCandidates {
   }
 
   /**
-   * Passes ArrayList of blanks cells from column c to @see nakedTriple()
+   * Passes ArrayList of blank cells from column c to @see nakedTriple()
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param c [int] Column to be searched
    * @return @see nakedTriple()
@@ -112,7 +115,7 @@ public class NakedCandidates {
   }
 
   /**
-   * Passes ArrayList of blanks cells from box containing
+   * Passes ArrayList of blank cells from box containing
    * the cell (r, c) to @see nakedTriple()
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row component of cell coordinate
@@ -134,34 +137,145 @@ public class NakedCandidates {
    */
   public static boolean nakedTriple(ArrayList<Cell> blanks){
     for(int i = 0; i < blanks.size() - 2; i++){
-      if(blanks.get(i).getPencilMarks().size() == 3){
+      ArrayList<Integer> triple = new ArrayList<>();
+      ArrayList<Integer> ipm = blanks.get(i).getPencilMarks();
+      if(ipm.size() == 3){
+        triple.add(i);
         for(int j = 0; j < blanks.size(); j++){
+          ArrayList<Integer> jpm = blanks.get(j).getPencilMarks();
           if(
             (j != i) &&
-            ((blanks.get(j).getPencilMarks().size() == 2
-            && matchingPair(blanks.get(i).getPencilMarks(), blanks.get(j).getPencilMarks()))
-            || (blanks.get(j).getPencilMarks().size() == 3
-            && blanks.get(i).getPencilMarks().equals(blanks.get(j).getPencilMarks())))
-          ){for(int k = 0; k < blanks.size(); k++){
+            ((jpm.size() == 2
+            && matchingPair(ipm, jpm))
+            || (ipm.equals(jpm)))
+          ){
+            triple.add(j);
+            for(int k = 0; k < blanks.size(); k++){
+            ArrayList<Integer> kpm = blanks.get(k).getPencilMarks();
               if(
                 (k != i && k != j) &&
-                ((blanks.get(k).getPencilMarks().size() == 2
-                && matchingPair(blanks.get(i).getPencilMarks(), blanks.get(k).getPencilMarks())
-                && matchingSingle(blanks.get(j).getPencilMarks(), blanks.get(k).getPencilMarks()))
-                || (blanks.get(k).getPencilMarks().size() == 3
-                && blanks.get(i).getPencilMarks().equals(blanks.get(k).getPencilMarks())))
+                ((kpm.size() == 2
+                && matchingPair(ipm, kpm)
+                && matchingSingle(jpm, kpm))
+                || (ipm.equals(kpm)))
               ){
-                blanks.remove(k);
-                blanks.remove(j);
-                Cell temp = blanks.remove(i);
+                triple.add(k);
+                Collections.sort(triple, Collections.reverseOrder());
+                for(int n : triple){
+                  blanks.remove(n);
+                }
                 for(Cell cell : blanks){
-                  for(int n : temp.getPencilMarks()){
+                  for(int n : ipm){
                     cell.erase(n);
                   }
                 }
                 return true;
               }
             }           
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  //==============================================================
+  // Quads
+  //==============================================================
+
+  /**
+   * Passes ArrayList of blank cells from row r to @see nakedQuad()
+   * @param p [CelledPuzzle] Puzzle being analyzed
+   * @param r [int] Row to be searched
+   * @return @see nakedQuad()
+   * [TRUE] Naked pair was found and eliminated from other blanks cells
+   * [FALSE] Naked pair not found
+   */
+  public static boolean nakedQuadRow(CelledPuzzle p, int r){
+    return nakedQuad(p.getBlanksRow(r));
+  }
+
+  /**
+   * Passes ArrayList of blank cells from column c to @see nakedQuad()
+   * @param p [CelledPuzzle] Puzzle being analyzed
+   * @param c [int] Column to be searched
+   * @return @see nakedQuad()
+   */
+  public static boolean nakedQuadCol(CelledPuzzle p, int c){
+    return nakedQuad(p.getBlanksCol(c));
+  }
+
+  /**
+   * Passes ArrayList of blank cells from box containing
+   * the cell (r, c) to @see nakedQuad()
+   * @param p [CelledPuzzle] Puzzle being analyzed
+   * @param r [int] Row component of cell coordinate
+   * @param c [int] Column component of cell coordinate
+   * @return @see nakedQuad()
+   */
+  public static boolean nakedQuadBox(CelledPuzzle p, int r, int c){
+    return nakedQuad(p.getBlanksBox(r, c));
+  }
+
+  /**
+   * Searches ArrayList of cells for a quad containing the same 
+   * quad of pencil marks, then erases those pencil marks from
+   * all other Cells in the ArrayList
+   * @param blanks [ArrayList<Cell>] Blank cells
+   * @return boolean
+   * [TRUE] Naked quad was found and erased from other cells
+   * [FALSE] Naked quad not found
+   */
+  public static boolean nakedQuad(ArrayList<Cell> blanks){
+    for(int i = 0; i < blanks.size(); i++){
+      ArrayList<Integer> quad = new ArrayList<>();
+      ArrayList<Integer> ipm = blanks.get(i).getPencilMarks();
+      if(ipm.size() == 4){
+        quad.add(i);
+        for(int j = 0; j < blanks.size(); j++){
+          ArrayList<Integer> jpm = blanks.get(j).getPencilMarks();
+          if(
+            (j != i) &&
+            ((jpm.size() == 2
+            && matchingPair(ipm, jpm))
+            || (ipm.equals(jpm)))
+          ){
+            quad.add(j);
+            for(int k = 0; k < blanks.size(); k++){
+              ArrayList<Integer> kpm = blanks.get(k).getPencilMarks();
+              if(
+                (k != i && k != j) &&
+                ((kpm.size() == 2
+                && matchingPair(ipm, kpm)
+                && matchingSingle(jpm, kpm))
+                ||(ipm.equals(kpm)))
+              ){
+                quad.add(k);
+                for(int l = 0; l < blanks.size(); l++){
+                  ArrayList<Integer> lpm = blanks.get(l).getPencilMarks();
+                  if(
+                    (l != i && l != j && l != k) &&
+                    ((lpm.size() == 2
+                    && matchingPair(ipm, lpm)
+                    && matchingSingle(jpm, lpm)
+                    && matchingSingle(kpm, lpm))
+                    ||(ipm.equals(lpm)))
+                  ){
+                    quad.add(l);
+                    Collections.sort(quad, Collections.reverseOrder());
+                    for(int n : quad){
+                      blanks.remove(n);
+                    }
+                    for(Cell cell : blanks){
+                      for(int n : ipm){
+                        cell.erase(n);
+                      }
+                    }
+                    return true;
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -256,6 +370,36 @@ public class NakedCandidates {
   // Testing
   //==============================================================
 
+  public static void testNakedQuads(){
+    int[][] puzzle = {
+      {0, 0, 0, 0, 3, 0, 0, 8, 6},
+      {0, 0, 0, 0, 2, 0, 0, 4, 0},
+      {0, 9, 0, 0, 7, 8, 5, 2, 0},
+      {3, 7, 1, 8, 5, 6, 2, 9, 4},
+      {9, 0, 0, 1, 4, 2, 3, 7, 5},
+      {4, 0, 0, 3, 9, 7, 6, 1, 8},
+      {2, 0, 0, 7, 0, 3, 8, 5, 9},
+      {0, 3, 9, 2, 0, 5, 4, 6, 7},
+      {7, 0, 0, 9, 0, 4, 1, 3, 2}
+    };
+    CelledPuzzle p = new CelledPuzzle(puzzle);
+    p.pencilMarkPuzzle();
+
+    for(int r = 0; r < 3; r++){
+      for(int c = 0; c < 3; c++){
+        System.out.println(p.grid[r][c].getPencilMarks());
+      }
+    }
+
+    System.out.println(nakedQuadBox(p, 0, 0));
+
+    for(int r = 0; r < 3; r++){
+      for(int c = 0; c < 3; c++){
+        System.out.println(p.grid[r][c].getPencilMarks());
+      }
+    }
+  }
+
   public static void testNakedTriples(){
     int[][] puzzle1 = {
       {0, 7, 0, 4, 0, 8, 0, 2, 9},
@@ -283,34 +427,6 @@ public class NakedCandidates {
   }
 
   public static void testNakedPairs(){
-    // int[][] puzzle = {
-    //   {4, 0, 0, 0, 0, 0, 9, 3, 8},
-    //   {0, 3, 2, 0, 9, 4, 1, 0, 0},
-    //   {0, 9, 5, 3, 0, 0, 2, 4, 0},
-    //   {3, 7, 0, 6, 0, 9, 0, 0, 4},
-    //   {5, 2, 9, 0, 0, 1, 6, 7, 3},
-    //   {6, 0, 4, 7, 0, 3, 0, 9, 0},
-    //   {9, 5, 7, 0, 0, 8, 3, 0, 0},
-    //   {0, 0, 3, 9, 0, 0, 4, 0, 0},
-    //   {2, 4, 0, 0, 3, 0, 7, 0, 9}
-    // };
-    // CelledPuzzle p = new CelledPuzzle(puzzle);
-    // p.pencilMarkPuzzle();
-
-    // for(Cell c : p.grid[2]){
-    //   System.out.println(
-    //     c.getPencilMarks()
-    //   );
-    // }
-
-    // System.out.println(nakedPairRow(p, 2));
-
-    // for(Cell c : p.grid[2]){
-    //   System.out.println(
-    //     c.getPencilMarks()
-    //   );
-    // }
-
     System.out.println("---------------------------------");
     int[][] puzzle2 = {
       {0, 8, 0, 0, 9, 0, 0, 3, 0},
@@ -339,31 +455,6 @@ public class NakedCandidates {
         System.out.println(p2.grid[r][c].getPencilMarks());
       }
     }
-
-    // System.out.println("---------------------------------");
-    // int[][] puzzle3 = {
-    //   {0, 8, 0, 0, 9, 0, 0, 3, 0},
-    //   {0, 3, 0, 0, 0, 0, 0, 6, 9},
-    //   {9, 0, 2, 0, 6, 3, 1, 5, 8},
-    //   {0, 2, 0, 8, 0, 4, 5, 9, 0},
-    //   {8, 5, 1, 9, 0, 7, 0, 4, 6},
-    //   {3, 9, 4, 6, 0, 5, 8, 7, 0},
-    //   {5, 6, 3, 0, 4, 0, 9, 8, 7},
-    //   {2, 0, 0, 0, 0, 0, 0, 1, 5},
-    //   {0, 1, 0, 0, 5, 0, 0, 2, 0}
-    // };
-    // CelledPuzzle p3 = new CelledPuzzle(puzzle3);
-    // p3.pencilMarkPuzzle();
-
-    // for(Cell[] row : p3.grid){
-    //   System.out.println(row[5].getPencilMarks());
-    // }
-
-    // System.out.println(nakedPairCol(p3, 5));
-
-    // for(Cell[] row : p3.grid){
-    //   System.out.println(row[5].getPencilMarks());
-    // }
   }
   
 }
