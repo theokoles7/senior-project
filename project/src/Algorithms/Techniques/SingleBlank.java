@@ -12,7 +12,7 @@ import Classes.*;
 public class SingleBlank {
 
   public static void main(String args[]){
-    testSimplePuzzle();
+    //testSimplePuzzle();
     testCelledPuzzle();
   }
 
