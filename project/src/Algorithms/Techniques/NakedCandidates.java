@@ -15,8 +15,8 @@ public class NakedCandidates {
 
   public static void main(String args[]){
     testNakedPairs();
-    //testNakedTriples();
-    //testNakedQuads();
+    testNakedTriples();
+    testNakedQuads();
   }
 
   //==============================================================
@@ -370,7 +370,16 @@ public class NakedCandidates {
   // Testing
   //==============================================================
 
+  /**
+   * Runs @see nakedQuadRow() on a predefined puzzle 
+   * to test @see nakedQuad() on box 1 of said puzzle
+   */
   public static void testNakedQuads(){
+    System.out.print(
+        "\n=====================================" +
+        "\n|          Naked Quad Test          |" +
+        "\n|===================================|"
+    );
     int[][] puzzle = {
       {0, 0, 0, 0, 3, 0, 0, 8, 6},
       {0, 0, 0, 0, 2, 0, 0, 4, 0},
@@ -384,24 +393,47 @@ public class NakedCandidates {
     };
     CelledPuzzle p = new CelledPuzzle(puzzle);
     p.pencilMarkPuzzle();
-
+    p.stringify();
+    System.out.println(
+      "Candidates before nakedQuad():"
+    );
     for(int r = 0; r < 3; r++){
       for(int c = 0; c < 3; c++){
-        System.out.println(p.grid[r][c].getPencilMarks());
+        System.out.println(
+          "[" + r + ", " + c + "] = " +
+          p.grid[r][c].getPencilMarks()
+          );
       }
     }
-
-    System.out.println(nakedQuadBox(p, 0, 0));
-
+    System.out.println(
+      "\nNaked Quad Found: " + nakedQuadBox(p, 0, 0));
+    System.out.println(
+      "\nCandidates after nakedQuad():"
+    );
     for(int r = 0; r < 3; r++){
       for(int c = 0; c < 3; c++){
-        System.out.println(p.grid[r][c].getPencilMarks());
+        System.out.println(
+          "[" + r + ", " + c + "] = " +
+          p.grid[r][c].getPencilMarks()
+          );
       }
     }
+    System.out.println(
+        "\n=====================================\n"
+    );
   }
 
+  /**
+   * Runs @see nakedTripleRow() on a predefined puzzle 
+   * to test @see nakedTriple() on row 5 of said puzzle
+   */
   public static void testNakedTriples(){
-    int[][] puzzle1 = {
+    System.out.print(
+        "\n=====================================" +
+        "\n|         Naked Triple Test         |" +
+        "\n|===================================|"
+    );
+    int[][] puzzle = {
       {0, 7, 0, 4, 0, 8, 0, 2, 9},
       {0, 0, 2, 0, 0, 0, 0, 0, 4},
       {8, 5, 4, 0, 2, 0, 0, 0, 7},
@@ -412,23 +444,43 @@ public class NakedCandidates {
       {2, 0, 0, 0, 0, 0, 4, 0, 3},
       {1, 3, 0, 6, 4, 2, 0, 7, 0}
     };
-    CelledPuzzle p1 = new CelledPuzzle(puzzle1);
-    p1.pencilMarkPuzzle();
-
-    for(Cell c : p1.grid[4]){
-      System.out.println(c.getPencilMarks());
+    CelledPuzzle p = new CelledPuzzle(puzzle);
+    p.pencilMarkPuzzle();
+    p.stringify();
+    System.out.println(
+      "Candidates before nakedTriple():"
+    );
+    for(int c = 0; c < p.grid[4].length; c++){
+      System.out.println(
+        "[" + 4 + ", " + c + "] = " +
+        p.grid[4][c].getPencilMarks());
     }
-
-    System.out.println(nakedTripleRow(p1, 4));
-
-    for(Cell c : p1.grid[4]){
-      System.out.println(c.getPencilMarks());
+    System.out.println(
+      "\nNaked triple found: " + nakedTripleRow(p, 4));
+    System.out.println(
+      "\nCandidates after nakedTriple():"
+    );
+    for(int c = 0; c < p.grid[4].length; c++){
+      System.out.println(
+        "[" + 4 + ", " + c + "] = " +
+        p.grid[4][c].getPencilMarks());
     }
+    System.out.println(
+        "\n=====================================\n"
+    );
   }
 
+  /**
+   * Runs @see nakedPairBox() on a predefined puzzle 
+   * to test @see nakedPair() on box 7 of said puzzle
+   */
   public static void testNakedPairs(){
-    System.out.println("---------------------------------");
-    int[][] puzzle2 = {
+    System.out.print(
+        "\n=====================================" +
+        "\n|          Naked Pair Test          |" +
+        "\n|===================================|"
+    );
+    int[][] puzzle = {
       {0, 8, 0, 0, 9, 0, 0, 3, 0},
       {0, 3, 0, 0, 0, 0, 0, 6, 9},
       {9, 0, 2, 0, 6, 3, 1, 5, 8},
@@ -439,22 +491,35 @@ public class NakedCandidates {
       {2, 0, 0, 0, 0, 0, 0, 1, 5},
       {0, 1, 0, 0, 5, 0, 0, 2, 0}
     };
-    CelledPuzzle p2 = new CelledPuzzle(puzzle2);
-    p2.pencilMarkPuzzle();
-
+    CelledPuzzle p = new CelledPuzzle(puzzle);
+    p.pencilMarkPuzzle();
+    p.stringify();
+    System.out.println(
+      "Candidates before nakedPair():"
+    );
     for(int r = 6; r <= 8; r++){
       for(int c = 0; c <= 2; c++){
-        System.out.println(p2.grid[r][c].getPencilMarks());
+        System.out.println(
+          "[" + r + ", " + c + "] = " +
+          p.grid[r][c].getPencilMarks()
+          );
       }
     }
-
-    System.out.println("\n" + nakedPairBox(p2, 7, 1) + "\n");
-
+    System.out.println("\nNaked pair found: " + nakedPairBox(p, 7, 1));
+    System.out.println(
+      "\nCandidates after nakedPair():"
+    );
     for(int r = 6; r <= 8; r++){
       for(int c = 0; c <= 2; c++){
-        System.out.println(p2.grid[r][c].getPencilMarks());
+        System.out.println(
+          "[" + r + ", " + c + "] = " +
+          p.grid[r][c].getPencilMarks()
+          );
       }
     }
+    System.out.println(
+        "\n=====================================\n"
+    );
   }
   
 }
