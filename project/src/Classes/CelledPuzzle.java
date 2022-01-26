@@ -1,5 +1,7 @@
 package Classes;
 
+import java.util.ArrayList;
+
 public class CelledPuzzle {
   public Cell[][] grid;
 
@@ -38,16 +40,42 @@ public class CelledPuzzle {
   }
 
   /**
+   * Returns an ArrayList of the empty Cell objects found in the specified row
+   * @param r Row within which to search for blank Cells
+   * @return [ArrayList<Cell>] Blank Cells
+   */
+  public ArrayList<Cell> getBlanksRow(int r){
+    ArrayList<Cell> blanks = new ArrayList<>();
+    for(Cell c : grid[r]){
+      if(c.getVal() == 0){blanks.add(c);}
+    }
+    return blanks;
+  }
+
+  /**
    * Returns the quantity of blank cells in specified column
    * @param c [int] Column to be analyzed
    * @return [int] Qantity of blanks in column c
    */
   public int blankInCol(int c){
       int blanks = 0;
-      for(int r = 0; r < grid.length; r++){
-          if(grid[r][c].getVal() == 0){blanks++;}
+      for(Cell[] row : grid){
+          if(row[c].getVal() == 0){blanks++;}
       }
       return blanks;
+  }
+
+  /**
+   * Returns an ArrayList of the empty Cell objects found in the specified column
+   * @param c Column within which to search for blanks Cells
+   * @return [ArrayList<Cell>] Blank Cells
+   */
+  public ArrayList<Cell> getBlanksCol(int c){
+    ArrayList<Cell> blanks = new ArrayList<>();
+    for(Cell[] row : grid){
+      if(row[c].getVal() == 0){blanks.add(row[c]);}
+    }
+    return blanks;
   }
 
   /**
@@ -64,6 +92,23 @@ public class CelledPuzzle {
           }
       }
       return blanks;
+  }
+
+  /**
+   * Returns an ArrayList of the empty Cell objects found in the 
+   * box containing the specified cell coordinate
+   * @param r Row component of cell coordinate
+   * @param c Column component of cell coordinate
+   * @return [ArrayList<Cell>] Blank Cells
+   */
+  public ArrayList<Cell> getBlanksBox(int r, int c){
+    ArrayList<Cell> blanks = new ArrayList<>();
+    for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
+        for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
+            if(grid[i][j].getVal() == 0){blanks.add(grid[i][j]);}
+        }
+    }
+    return blanks;
   }
 
   //==============================================================
@@ -169,10 +214,24 @@ public class CelledPuzzle {
    * @param c [int] Column component of coordinate
    * @see Cell.mark()
    */
-  public void pencilMark(int r, int c){
+  public void pencilMarkCell(int r, int c){
     for(int i = 1; i <= grid.length; i++){
       if(numValid(i, r, c)){ grid[r][c].mark(i);}
       //else{grid[r][c].erase(i);}
+    }
+  }
+
+  /**
+   * Adds pencil marks for every empty cell found in the grid
+   * @see pencilMarkCell()
+   */
+  public void pencilMarkPuzzle(){
+    for(int r = 0; r < grid.length; r ++){
+      for(int c = 0; c < grid.length; c++){
+        if(grid[r][c].getVal() == 0){
+          pencilMarkCell(r, c);
+        }
+      }
     }
   }
 

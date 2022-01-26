@@ -40,14 +40,14 @@ public class SingleBlank {
     }else if(p.blankInCol(c) == 1){
       p.grid[r][c] = p.diffCol(c);
       System.out.printf(
-        "[%1d, %1d] = %1d (Single Blank in row)\n", 
+        "[%1d, %1d] = %1d (Single Blank in col)\n", 
         r, c, p.grid[r][c]
         );
       return true;
     }else if(p.blankInBox(r, c) == 1){
       p.grid[r][c] = p.diffBox(r, c);
       System.out.printf(
-        "[%1d, %1d] = %1d (Single Blank in row)\n", 
+        "[%1d, %1d] = %1d (Single Blank in box)\n", 
         r, c, p.grid[r][c]
         );
       return true;

@@ -35,12 +35,14 @@ public class App {
             for(int[][] p : level){
                 CelledPuzzle cp = new CelledPuzzle(p);
                 double time = System.nanoTime();
+                //cp.stringify();   // Print initial puzzle
                 System.out.printf(
-                    "\n|%-14s %-5b  %10.2f ms|",
+                    "\n|%-14s %-5b %11.2f ms|",
                     diff,
                     Backtrack.solve(cp),
                     (System.nanoTime() - time) / 1000000
                 );
+                //cp.stringify();   // Print final solution
             }
             outer++;
         }
@@ -77,12 +79,14 @@ public class App {
             for(int[][] p : level){
                 CelledPuzzle cp = new CelledPuzzle(p);
                 double time = System.nanoTime();
+                //cp.stringify();   // Print initial puzzle
                 System.out.printf(
-                    "\n|%-14s %-5b  %10.2f ms|",
+                    "\n|%-14s %-5b %11.2f ms|",
                     diff,
                     BacktrackEnhanced.solve(cp),
                     (System.nanoTime() - time) / 1000000
                 );
+                //cp.stringify();   // Print final solution
             }
             outer++;
         }
