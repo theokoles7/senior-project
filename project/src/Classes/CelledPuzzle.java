@@ -47,9 +47,7 @@ public class CelledPuzzle {
   public ArrayList<Cell> getBlanksRow(int r){
     ArrayList<Cell> blanks = new ArrayList<>();
     for(Cell c : grid[r]){
-      if(c.getVal() == 0){
-        blanks.add(c);
-      }
+      if(c.getVal() == 0){blanks.add(c);}
     }
     return blanks;
   }
@@ -75,9 +73,7 @@ public class CelledPuzzle {
   public ArrayList<Cell> getBlanksCol(int c){
     ArrayList<Cell> blanks = new ArrayList<>();
     for(Cell[] row : grid){
-      if(row[c].getVal() == 0){
-        blanks.add(row[c]);
-      }
+      if(row[c].getVal() == 0){blanks.add(row[c]);}
     }
     return blanks;
   }
@@ -109,7 +105,7 @@ public class CelledPuzzle {
     ArrayList<Cell> blanks = new ArrayList<>();
     for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
         for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
-            if(grid[i][j].getVal() == 0){blanks.add(grid[r][c]);}
+            if(grid[i][j].getVal() == 0){blanks.add(grid[i][j]);}
         }
     }
     return blanks;
