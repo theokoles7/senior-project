@@ -26,7 +26,8 @@ public class SingleBlank {
    * @param p [SimplePuzzle] Puzzle containing cell being checked
    * @param r [int] Row component of cell coordinate being checked
    * @param c [int] Column component of cell coordinate being checked
-   * @return boolean [TRUE] Cell was the only blank and assigned a value 
+   * @return boolean 
+   * [TRUE] Cell was the only blank and assigned a value 
    * [FALSE] Cell was not assigned a value
    */
   public static boolean singleBlank(SimplePuzzle p, int r, int c){
@@ -89,7 +90,8 @@ public class SingleBlank {
    * @param p [CelledPuzzle] Puzzle containing cell being checked
    * @param r [int] Row component of cell coordinate being checked
    * @param c [int] Column component of cell coordinate being checked
-   * @return boolean [TRUE] Cell was the only blank and assigned a value 
+   * @return boolean 
+   * [TRUE] Cell was the only blank and assigned a value 
    * [FALSE] Cell was not assigned a value
    */
   public static boolean singleBlank(CelledPuzzle p, int r, int c){

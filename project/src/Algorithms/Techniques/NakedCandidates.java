@@ -28,8 +28,6 @@ public class NakedCandidates {
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row to be searched
    * @return @see nakedPair()
-   * [TRUE] Naked pair was found and eliminated from other blanks cells
-   * [FALSE] Naked pair not found
    */
   public static boolean nakedPairRow(CelledPuzzle p, int r){
     return nakedPair(p.getBlanksRow(r));
@@ -97,8 +95,6 @@ public class NakedCandidates {
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row to be searched
    * @return @see nakedTriple()
-   * [TRUE] Naked pair was found and eliminated from other blanks cells
-   * [FALSE] Naked pair not found
    */
   public static boolean nakedTripleRow(CelledPuzzle p, int r){
     return nakedTriple(p.getBlanksRow(r));
@@ -188,8 +184,6 @@ public class NakedCandidates {
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row to be searched
    * @return @see nakedQuad()
-   * [TRUE] Naked pair was found and eliminated from other blanks cells
-   * [FALSE] Naked pair not found
    */
   public static boolean nakedQuadRow(CelledPuzzle p, int r){
     return nakedQuad(p.getBlanksRow(r));
@@ -331,7 +325,7 @@ public class NakedCandidates {
    * @param pm1 [ArrayList<Integer>] Pencil marks of first cell being compared
    * @param pm2 [ArrayList<Integer>] Pencil marks of second cell being compared
    * @return boolean
-   * [TRUE] At least on matching triple found
+   * [TRUE] At least one matching triple found
    * [FALSE] No matching triple found
    */
   public static boolean matchingTriple(ArrayList<Integer> pm1, ArrayList<Integer> pm2){
@@ -351,7 +345,7 @@ public class NakedCandidates {
    * @param pm1 [ArrayList<Integer>] Pencil marks of first cell being compared
    * @param pm2 [ArrayList<Integer>] Pencil marks of second cell being compared
    * @return boolean
-   * [TRUE] At least on matching quad found
+   * [TRUE] At least one matching quad found
    * [FALSE] No matching quad found
    */
   public static boolean matchingQuad(ArrayList<Integer> pm1, ArrayList<Integer> pm2){

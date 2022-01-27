@@ -54,7 +54,9 @@ public class Cell {
   /**
    * Adds a pencil mark (valid candidate) for the cell
    * @param n [int] Number being added as pencil mark
-   * @return [TRUE] Number added [FALSE] Number already present
+   * @return boolean
+   * [TRUE] Number added 
+   * [FALSE] Number already present
    */
   public boolean mark(int n){
     return this.pencil_marks.add(n);
@@ -63,7 +65,9 @@ public class Cell {
   /**
    * Removes a pencil mark (valid candidate) for the cell
    * @param n [int] Number to be removed from pencil marks
-   * @return [TRUE] Number was removed [FALSE] Number did not exist
+   * @return boolean
+   * [TRUE] Number was removed 
+   * [FALSE] Number did not exist
    */
   public boolean erase(Integer n){
     return this.pencil_marks.remove(n);

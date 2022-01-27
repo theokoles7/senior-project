@@ -69,7 +69,9 @@ public class SimplePuzzle {
      * Returns true if number n already exists in row r
      * @param n Number to be searched for
      * @param r Row to be searched
-     * @return  boolean [TRUE] number is in row [FALSE] number is not in row
+     * @return  boolean 
+     * [TRUE] number is in row 
+     * [FALSE] number is not in row
      */
     public boolean numInRow(int n, int r){
         for(int i : grid[r]){
@@ -82,7 +84,9 @@ public class SimplePuzzle {
      * Returns true if number n already exists in column c
      * @param n Number to be searched for
      * @param c Column to be searched
-     * @return boolean [TRUE] number is in column [FALSE] number is not in column
+     * @return boolean 
+     * [TRUE] number is in column 
+     * [FALSE] number is not in column
      */
     public boolean numInCol(int n, int c){
         for(int i = 0; i < grid.length; i ++){
@@ -96,7 +100,9 @@ public class SimplePuzzle {
      * @param n Number to be searched for
      * @param r Row component of coordinate 
      * @param c Column component of coordinate
-     * @return boolean [TRUE] number is in box [FALSE] number is not in box
+     * @return boolean 
+     * [TRUE] number is in box 
+     * [FALSE] number is not in box
      */
     public boolean numInBox(int n, int r, int c){
         for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
@@ -112,7 +118,9 @@ public class SimplePuzzle {
      * @param n Number to be searched for
      * @param r Row component of coordinate
      * @param c Column component of coordinate
-     * @return boolean [TRUE] number is a valid candidate [FALSE] number is not a valid candidate
+     * @return boolean 
+     * [TRUE] number is a valid candidate 
+     * [FALSE] number is not a valid candidate
      * @see numInRow(), numInCol(), numInBox()
      */
     public boolean numValid(int n, int r, int c){

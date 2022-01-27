@@ -24,10 +24,10 @@ public class Backtrack{
     /**
      * Acts as the controller function for the Backtrack 
      * algorithm; Makes the call to @see _solve().
-     * If the puzzle is solved successfully, "SOLVED" 
-     * is printed along with the solution. Otherwise
-     * "FAILED" is printed and no solution is provided.
      * @param p [SimplePuzzle] Puzzle to be solved
+     * @return boolean
+     * [TRUE] Puzzle solved successfully
+     * [FALSE] Failed to saolve puzzle
      */
     public static boolean solve(SimplePuzzle p){
         //p.stringify();
@@ -42,8 +42,10 @@ public class Backtrack{
     /**
      * Recursive, brute force algorithm that uses the backtracking method
      * @param p [SimplePuzzle] Puzzle to be solved
-     * @return boolean [TRUE] Puzzle is solved successfully or valid 
-     * candidate was found for cell [FALSE] if Sudoku violation is found
+     * @return boolean 
+     * [TRUE] Puzzle is solved successfully or valid 
+     * candidate was found for cell [
+     * FALSE] if Sudoku violation is found
      */
     public static boolean _solve(SimplePuzzle p){
         for(int i = 0; i < p.grid.length; i++){
@@ -75,10 +77,10 @@ public class Backtrack{
     /**
      * Acts as the controller function for the Simple 
      * algorithm; Makes the call to @see _solve().
-     * If the puzzle is solved successfully, "SOLVED" 
-     * is printed along with the solution. Otherwise
-     * "FAILED" is printed and no solution is provided.
      * @param p [CelledPuzzle] Puzzle to be solved
+     * @return boolean
+     * [TRUE] Puzzle solved successfully
+     * [FALSE] Failed to saolve puzzle
      */
     public static boolean solve(CelledPuzzle p){
         //p.stringify();
@@ -93,8 +95,10 @@ public class Backtrack{
     /**
      * Recursive, brute force algorithm that uses the backtracking method
      * @param p [CelledPuzzle] Puzzle to be solved
-     * @return boolean [TRUE] Puzzle is solved successfully or valid 
-     * candidate was found for cell [FALSE] if Sudoku violation is found
+     * @return boolean 
+     * [TRUE] Puzzle is solved successfully or valid 
+     * candidate was found for cell 
+     * [FALSE] if Sudoku violation is found
      */
     public static boolean _solve(CelledPuzzle p){
         for(int i = 0; i < p.grid.length; i++){

@@ -15,7 +15,9 @@ public class BacktrackEnhanced {
      * algorithm; First makes the call to @see pencilMarks()
      * and then makes the call to @see _solve().
      * @param p [SimplePuzzle] Puzzle to be solved
-     * @return boolean [TRUE] Puzzle is solved successfully [FALSE] Failed to solve puzzle
+     * @return boolean 
+     * [TRUE] Puzzle is solved successfully 
+     * [FALSE] Failed to solve puzzle
      */
   public static boolean solve(CelledPuzzle p){
     //p.stringify();    // Print initial
@@ -33,8 +35,10 @@ public class BacktrackEnhanced {
    * A version of the brute force back tracking algorithm that
    * utilizes populated pencil marks for testing versus 1 - 9
    * @param p [CelledPuzzle] Puzzle to be solved
-   * @return boolean [TRUE] Puzzle is solved successfully or valid 
-   * candidate was found for cell [FALSE] Sudoku violation is found
+   * @return boolean 
+   * [TRUE] Puzzle is solved successfully or valid 
+   * candidate was found for cell 
+   * [FALSE] Sudoku violation is found
    */
   public static boolean _solve(CelledPuzzle p){
     for(int r = 0; r < p.grid.length; r++){
