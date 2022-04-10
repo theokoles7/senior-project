@@ -80,4 +80,15 @@ public class Cell {
   public ArrayList<Integer> getPencilMarks(){
     return this.pencil_marks;
   }
+
+  /**
+   * Determines if cell's pencil marks contains specified integer
+   * @param n [int] Integer to search for
+   * @return boolean
+   * [TRUE] Contains integer
+   * [FALSE] Does not contain integer
+   */
+  public boolean hasMark(int n){
+    return this.pencil_marks.contains(n);
+  }
 }
