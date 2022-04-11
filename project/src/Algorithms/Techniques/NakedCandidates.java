@@ -20,6 +20,38 @@ public class NakedCandidates {
   }
 
   //==============================================================
+  // Drivers
+  //==============================================================
+
+  public static void row(CelledPuzzle p, int r){
+    nakedPairRow(p, r);
+    nakedTripleRow(p, r);
+    nakedQuadRow(p, r);
+  }
+
+  public static void col(CelledPuzzle p, int c){
+    nakedPairCol(p, c);
+    nakedTripleCol(p, c);
+    nakedQuadCol(p, c);
+  }
+
+  public static void box(CelledPuzzle p, int r, int c){
+    nakedPairBox(p, r, c);
+    nakedTripleBox(p, r, c);
+    nakedQuadBox(p, r, c);
+  }
+
+  public static void checkPuzzle(CelledPuzzle p){
+    for(int r = 0; r < p.grid.length; r++){
+      row(p, r);
+      for(int c = 0; c < p.grid.length; c++){
+        col(p, c);
+        box(p, r, c);
+      }
+    }
+  }
+
+  //==============================================================
   // Pairs
   //==============================================================
 
@@ -28,8 +60,6 @@ public class NakedCandidates {
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row to be searched
    * @return @see nakedPair()
-   * [TRUE] Naked pair was found and eliminated from other blanks cells
-   * [FALSE] Naked pair not found
    */
   public static boolean nakedPairRow(CelledPuzzle p, int r){
     return nakedPair(p.getBlanksRow(r));
@@ -97,8 +127,6 @@ public class NakedCandidates {
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row to be searched
    * @return @see nakedTriple()
-   * [TRUE] Naked pair was found and eliminated from other blanks cells
-   * [FALSE] Naked pair not found
    */
   public static boolean nakedTripleRow(CelledPuzzle p, int r){
     return nakedTriple(p.getBlanksRow(r));
@@ -188,8 +216,6 @@ public class NakedCandidates {
    * @param p [CelledPuzzle] Puzzle being analyzed
    * @param r [int] Row to be searched
    * @return @see nakedQuad()
-   * [TRUE] Naked pair was found and eliminated from other blanks cells
-   * [FALSE] Naked pair not found
    */
   public static boolean nakedQuadRow(CelledPuzzle p, int r){
     return nakedQuad(p.getBlanksRow(r));
@@ -331,7 +357,7 @@ public class NakedCandidates {
    * @param pm1 [ArrayList<Integer>] Pencil marks of first cell being compared
    * @param pm2 [ArrayList<Integer>] Pencil marks of second cell being compared
    * @return boolean
-   * [TRUE] At least on matching triple found
+   * [TRUE] At least one matching triple found
    * [FALSE] No matching triple found
    */
   public static boolean matchingTriple(ArrayList<Integer> pm1, ArrayList<Integer> pm2){
@@ -351,7 +377,7 @@ public class NakedCandidates {
    * @param pm1 [ArrayList<Integer>] Pencil marks of first cell being compared
    * @param pm2 [ArrayList<Integer>] Pencil marks of second cell being compared
    * @return boolean
-   * [TRUE] At least on matching quad found
+   * [TRUE] At least one matching quad found
    * [FALSE] No matching quad found
    */
   public static boolean matchingQuad(ArrayList<Integer> pm1, ArrayList<Integer> pm2){

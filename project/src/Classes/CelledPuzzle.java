@@ -111,6 +111,18 @@ public class CelledPuzzle {
     return blanks;
   }
 
+  /**
+   * Returns the quantity of blank cells in puzzle
+   * @return [int] Quantity of blank cells in puzzle
+   */
+  public int blankInPuz(){
+      int blanks = 0;
+      for(int r = 0; r < grid.length; r++){
+          blanks += blankInRow(r);
+      }
+      return blanks;
+  }
+
   //==============================================================
   // Candidate Validation
   //==============================================================
@@ -119,7 +131,9 @@ public class CelledPuzzle {
    * Returns true if number n already exists in row r
    * @param n [int] Number to be searched for
    * @param r [int] Row to be searched
-   * @return  boolean [TRUE] number is in row [FALSE] number is not in row
+   * @return  boolean 
+   * [TRUE] number is in row 
+   * [FALSE] number is not in row
    */
   public boolean numInRow(int n, int r){
     for(Cell c : grid[r]){
@@ -132,7 +146,9 @@ public class CelledPuzzle {
    * Returns true if number n already exists in column c
    * @param n [int] Number to be searched for
    * @param c [int] Column to be searched
-   * @return boolean [TRUE] number is in column [FALSE] number is not in column
+   * @return boolean 
+   * [TRUE] number is in column 
+   * [FALSE] number is not in column
    */
   public boolean numInCol(int n, int c){
     for(int r = 0; r < grid.length; r++){
@@ -146,7 +162,9 @@ public class CelledPuzzle {
    * @param n [int] Number to be searched for
    * @param r [int] Row component of coordinate 
    * @param c [int] Column component of coordinate
-   * @return boolean [TRUE] number is in box [FALSE] number is not in box
+   * @return boolean 
+   * [TRUE] number is in box 
+   * [FALSE] number is not in box
    */
   public boolean numInBox(int n, int r, int c){
     for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
@@ -162,7 +180,9 @@ public class CelledPuzzle {
    * @param n [int] Number to be searched for
    * @param r [int] Row component of coordinate
    * @param c [int] Column component of coordinate
-   * @return boolean [TRUE] number is a valid candidate [FALSE] number is not a valid candidate
+   * @return boolean 
+   * [TRUE] number is a valid candidate 
+   * [FALSE] number is not a valid candidate
    * @see numInRow(), numInCol(), numInBox()
    */
   public boolean numValid(int n, int r, int c){
@@ -233,6 +253,55 @@ public class CelledPuzzle {
         }
       }
     }
+  }
+
+  /**
+   * Erases n from all cells' pencil marks in row
+   * @param r [int] Row coordinate
+   * @param n [int] Integer being erased
+   */
+  public void eraseNRow(int r, int n){
+    for(int c = 0; c < grid.length; c++){
+      grid[r][c].erase(n);
+    }
+  }
+
+  /**
+   * Erases n from all cells' pencil marks in column
+   * @param c [int] Column coordinate
+   * @param n [int] Integer being erased
+   */
+  public void eraseNCol(int c, int n){
+    for(int r = 0; r < grid.length; r++){
+      grid[r][c].erase(n);
+    }
+  }
+
+  /**
+   * Erases n from all cells' pencil marks in box
+   * @param r [int] Row coordinate
+   * @param c [int] Column coordinate
+   * @param n [int] Integer being erased
+   */
+  public void eraseNBox(int r, int c, int n){
+    for(int i = r - (r % 3); i <= (r - (r % 3)) + 2; i++){
+      for(int j = c - (c % 3); j <= (c - (c % 3)) + 2; j++){
+        grid[i][j].erase(n);
+      }
+    }
+  }
+
+  /**
+   * Erases n from all cells' pencil marks in row,
+   * column, and box containing specified cell coordinate
+   * @param r [int] Row coordinate
+   * @param c [int] Column coordinate
+   * @param n [int] Integer being erased
+   */
+  public void eraseNAdj(int r, int c, int n){
+    eraseNRow(r, n);
+    eraseNCol(c, n);
+    eraseNBox(r, c, n);
   }
 
   //==============================================================
