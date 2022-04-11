@@ -20,6 +20,38 @@ public class NakedCandidates {
   }
 
   //==============================================================
+  // Drivers
+  //==============================================================
+
+  public static void row(CelledPuzzle p, int r){
+    nakedPairRow(p, r);
+    nakedTripleRow(p, r);
+    nakedQuadRow(p, r);
+  }
+
+  public static void col(CelledPuzzle p, int c){
+    nakedPairCol(p, c);
+    nakedTripleCol(p, c);
+    nakedQuadCol(p, c);
+  }
+
+  public static void box(CelledPuzzle p, int r, int c){
+    nakedPairBox(p, r, c);
+    nakedTripleBox(p, r, c);
+    nakedQuadBox(p, r, c);
+  }
+
+  public static void checkPuzzle(CelledPuzzle p){
+    for(int r = 0; r < p.grid.length; r++){
+      row(p, r);
+      for(int c = 0; c < p.grid.length; c++){
+        col(p, c);
+        box(p, r, c);
+      }
+    }
+  }
+
+  //==============================================================
   // Pairs
   //==============================================================
 
