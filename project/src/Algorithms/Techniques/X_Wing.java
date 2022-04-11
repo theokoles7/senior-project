@@ -40,16 +40,16 @@ public class X_Wing {
   public static void row(CelledPuzzle p, int r1){
     for(int n = 0; n < p.grid.length; n++){
       if(nQuantRow(p.grid[r1], n) == 2){
-        System.out.println("\nRow " + r1 + " has 2 " + n + "'s");
+        //System.out.println("\nRow " + r1 + " has 2 " + n + "'s");
         for(int r2 = 0; r2 < p.grid.length; r2++){
           if(r2 != r1 && nQuantRow(p.grid[r2], n) == 2){
-            System.out.println("\tRow " + r2 + " has 2 " + n + "'s");
+            //System.out.println("\tRow " + r2 + " has 2 " + n + "'s");
             for(int c1 = 0; c1 < p.grid.length; c1++){
               if(p.grid[r1][c1].hasMark(n) && p.grid[r2][c1].hasMark(n)){
-                System.out.println("\t\tMatch 1 at column " + c1);
+                //System.out.println("\t\tMatch 1 at column " + c1);
                 for(int c2 = c1 + 1; c2 < p.grid.length; c2++){
                   if(p.grid[r1][c2].hasMark(n) && p.grid[r2][c2].hasMark(n)){
-                    System.out.println("\t\t\tMatch 2 at column " + c2);
+                    //System.out.println("\t\t\tMatch 2 at column " + c2);
                     eraseN(p, r1, r2, c1, c2, n);
                   }
                 }
@@ -69,16 +69,16 @@ public class X_Wing {
   public static void col(CelledPuzzle p, int c1){
     for(int n = 0; n < p.grid.length; n++){
       if(nQuantCol(p, c1, n) == 2){
-        System.out.println("\nColumn " + c1 + " has 2 " + n + "'s");
+        //System.out.println("\nColumn " + c1 + " has 2 " + n + "'s");
         for(int c2 = 0; c2 < p.grid.length; c2++){
           if(c2 != c1 && nQuantCol(p, c2, n) == 2){
-            System.out.println("\tColumn " + c2 + " has 2 " + n + "'s");
+            //System.out.println("\tColumn " + c2 + " has 2 " + n + "'s");
             for(int r1 = 0; r1 < p.grid.length; r1++){
               if(p.grid[r1][c1].hasMark(n) && p.grid[r1][c2].hasMark(n)){
-                System.out.println("\t\tMatch 1 at row " + r1);
+                //System.out.println("\t\tMatch 1 at row " + r1);
                 for(int r2 = r1 + 1; r2 < p.grid.length; r2++){
                   if(p.grid[r2][c1].hasMark(n) && p.grid[r2][c2].hasMark(n)){
-                    System.out.println("\t\t\tMatch 2 at row " + r2);
+                    //System.out.println("\t\t\tMatch 2 at row " + r2);
                     eraseN(p, r1, r2, c1, c2, n);
                   }
                 }
@@ -106,11 +106,11 @@ public class X_Wing {
    * @param n [int] Integer being erased
    */
   public static void eraseN(CelledPuzzle p, int r1, int r2, int c1, int c2, int n){
-    System.out.println(
-      "\t\t\t\tErasing " + n + " from row " +
-      r1 + ", row " + r2 + ", col " + c1 +
-      ", and col " + c2
-    );
+    // System.out.println(
+    //   "\t\t\t\tErasing " + n + " from row " +
+    //   r1 + ", row " + r2 + ", col " + c1 +
+    //   ", and col " + c2
+    // );
     for(int r = 0, c = 0; r < p.grid.length; r++, c++){
       if(c != c1 && c != c2){
         p.grid[r1][c].erase(n);
@@ -185,6 +185,19 @@ public class X_Wing {
       System.out.println(
         "[" + r + ", " + c + "] = " + p.grid[r][c].getPencilMarks()
       );
+    }
+  }
+
+  /**
+   * Driver to check puzzle using X-Wing technique
+   * @param p [CelledPuzzle] Puzzle being checked
+   */
+  public static void checkPuzzle(CelledPuzzle p){
+    for(int r = 0; r < p.grid.length; r++){
+      for(int c = 0; c < p.grid.length; c++){
+        row(p, r);
+        col(p, c);
+      }
     }
   }
 
