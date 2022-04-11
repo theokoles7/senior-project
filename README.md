@@ -326,6 +326,18 @@ Pencil marks for column 4:
 [7, 4] = []
 [8, 4] = [3, 8]
 
+Row 2 has 2 4's
+        Row 4 has 2 4's
+                Match 1 at column 1
+                        Match 2 at column 4
+                                Erasing 4 from row 2, row 4, col 1, and col 4
+                Match 1 at column 4
+        Row 5 has 2 4's
+
+Row 2 has 2 6's
+        Row 3 has 2 6's
+                Match 1 at column 2
+
 After row test:
 
 Pencil marks for row 2:
