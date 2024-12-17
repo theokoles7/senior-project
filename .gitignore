@@ -1,2 +1,5 @@
-/project/.vscode
-/project/bin
+# Build files
+__pycache__
+
+# Logs
+logs
