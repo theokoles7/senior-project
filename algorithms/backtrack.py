@@ -22,9 +22,10 @@ class Backtrack():
     def __init__(self):
         """# Initialize algorithm statistics."""
         # Initialize statistics
-        self._backtracks:   int =   0
-        self._considered:   int =   0
-        self._guesses:      int =   0
+        self._backtracks:           int =           0
+        self._backtrack_locations:  list[tuple] =   []
+        self._considered:           int =           0
+        self._guesses:              int =           0
         
         # Initialize logger
         self._logger:       Logger =    LOGGER.getChild("backtrack")
@@ -104,6 +105,7 @@ class Backtrack():
                                 
                                 # Increment backtracks made
                                 self._backtracks += 1
+                                self._backtrack_locations.append((r, c))
                                 
                         # Candidate elements exhausted
                         return False
@@ -120,6 +122,7 @@ class Backtrack():
             "solution":     puzzle.to_list(),
             "time":         str(datetime.now() - start_time),
             "backtracks":   self._backtracks,
+            "backtrack_locations":  self._backtrack_locations,
             "considered":   self._considered,
             "guesses":      self._guesses
         }

@@ -173,6 +173,38 @@ class Puzzle():
         """
         return self._grid
     
+    def pencil_mark_cell(self,
+        row_coordinate:     int,
+        column_coordinate:  int
+    ) -> set[int]:
+        """# Populate pencil marks for specified cell.
+
+        ## Args:
+            * row_coordinate    (int):  Row in which cell is located.
+            * column_coordinate (int):  Column in which cell is located.
+
+        ## Returns:
+            * set[int]: Cell's populated pencil marks.
+        """
+        return self._grid[row_coordinate - 1][column_coordinate - 1].pencil_marks(
+            insert =    self._elements.difference(*[
+                self.row(row_number = row_coordinate),
+                self.column(column_number = column_coordinate),
+                self.box(box_number = ((((row_coordinate - 1) // self._root) * self._root) + ((column_coordinate - 1) // self._root)) + 1)
+            ])
+        )
+    
+    def pencil_mark_puzzle(self) -> None:
+        """# Populate pencil marks for all cells in grid."""
+        # For each row in grid...
+        for r, row in enumerate(self._grid, start = 1):
+
+            # For each cell in row...
+            for c, _ in enumerate(row, start = 1):
+
+                # Populate pencil marks for cell
+                self.pencil_mark_cell(row_coordinate = r, column_coordinate = c)
+    
     def row(self,
         row_number: int
     ) -> list[any]:

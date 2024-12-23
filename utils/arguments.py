@@ -46,9 +46,9 @@ _solve:     ArgumentParser =    _subparser.add_parser(
 _solve.add_argument(
     "--algorithm",
     type =          str,
-    choices =       ["backtrack"],
+    choices =       ["backtrack", "enhanced-backtrack"],
     default =       "backtrack",
-    help =          "Algorithm with which puzzle will be solved."
+    help =          """Algorithm with which puzzle will be solved."""
 )
 
 _solve.add_argument(
@@ -62,8 +62,8 @@ _solve.add_argument(
 _solve.add_argument(
     "--puzzle-number",
     type =          int,
-    default =       1,
-    help =          """Number of puzle within directory (difficulty) to be solved. Defaults to 1."""
+    default =       -1,
+    help =          """Number of puzzle within directory (difficulty) to be solved. Defaults to 1."""
 )
 
 # +================================================================================================+

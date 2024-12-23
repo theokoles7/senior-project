@@ -2,7 +2,7 @@
 
 from json       import dump, dumps, load
 
-from algorithms import Backtrack
+from algorithms import Backtrack, EnhancedBacktrack, select_algorithm
 from components import Puzzle
 from utils      import ARGS, BANNER, LOGGER
 
@@ -19,16 +19,16 @@ if __name__ == "__main__":
         case "solve":
             
             # Initialize algorithm (for statistical purposes)
-            algorithm:      Backtrack = Backtrack()
+            algorithm:      Backtrack | EnhancedBacktrack = select_algorithm(ARGS.algorithm)
             
             # Load puzle JSON
-            puzzle_json:    dict =      load(fp = open(file = f"puzzles/{ARGS.puzzle_difficulty}/{ARGS.puzzle_number}.json", mode = "r"))
+            puzzle_json:    dict =                          load(fp = open(file = f"puzzles/{ARGS.puzzle_difficulty}/{ARGS.puzzle_number}.json", mode = "r"))
             
             # Initialize puzzle object
-            puzzle:         Puzzle =    Puzzle(puzzle_json["prompt"])
+            puzzle:         Puzzle =                        Puzzle(puzzle_json["prompt"])
             
             # Record results
-            results:        dict =      algorithm.solve(puzzle)
+            results:        dict =                          algorithm.solve(puzzle)
             
             # If solution has not yet been recorded
             if puzzle_json["solution"] == None:
