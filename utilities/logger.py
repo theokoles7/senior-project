@@ -1,11 +1,11 @@
 """Logging configuration & initialization."""
 
-from logging            import getLogger, Formatter, Logger, StreamHandler
-from logging.handlers   import RotatingFileHandler
-from os                 import makedirs
-from sys                import stdout
+from logging                import getLogger, Formatter, Logger, StreamHandler
+from logging.handlers       import RotatingFileHandler
+from os                     import makedirs
+from sys                    import stdout
 
-from utils.arguments    import ARGS
+from utilities.arguments    import ARGS
 
 # Ensure logging path exists
 makedirs(ARGS.logging_path, exist_ok = True)

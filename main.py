@@ -4,7 +4,7 @@ from json       import dump, dumps, load
 
 from algorithms import Backtrack, EnhancedBacktrack, select_algorithm
 from components import Puzzle
-from utils      import ARGS, BANNER, LOGGER
+from utilities  import ARGS, BANNER, LOGGER
 
 if __name__ == "__main__":
     """Execute requested command."""

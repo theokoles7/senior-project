@@ -6,7 +6,7 @@ from math               import sqrt
 from numpy              import count_nonzero
 
 from components.cell    import Cell
-from utils              import LOGGER
+from utilities          import LOGGER
 
 class Puzzle():
     """Puzzle class."""

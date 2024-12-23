@@ -4,7 +4,7 @@ from datetime   import datetime
 from logging    import Logger
 
 from components import Cell, Puzzle
-from utils      import LOGGER
+from utilities  import LOGGER
 
 class Backtrack():
     """# Classic Backtrack Algorithm.

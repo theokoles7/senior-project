@@ -2,7 +2,7 @@
 
 from logging    import Logger
 
-from utils      import LOGGER
+from utilities  import LOGGER
 
 class Cell():
     """Cell class."""
